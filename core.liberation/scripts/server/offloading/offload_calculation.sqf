@@ -5,7 +5,7 @@ private ["_currentgroup", "_group_owner", "_idx_group_owner"];
 
 while {true} do {
 	group_owners = [[gamelogic, "Server", owner gamelogic, 0, 0, 0]];
-	{ group_owners pushback [_x, name _x, owner _x, 0, 0, 0] } foreach allPlayers;
+	{ group_owners pushBack [_x, name _x, owner _x, 0, 0, 0] } forEach allPlayers;
 
 	{
 		_currentgroup = _x;
@@ -16,7 +16,7 @@ while {true} do {
 				_group_owner = _x;
 				_idx_group_owner = group_owners find _x;
 			};
-		} foreach group_owners;
+		} forEach group_owners;
 
 		if ( count _group_owner > 0 ) then {
 			if ( side _currentgroup == GRLIB_side_friendly ) then {
@@ -30,7 +30,7 @@ while {true} do {
 			};
 		};
 		sleep 0.2;
-	} foreach allGroups;
+	} forEach allGroups;
 
 	publicVariable "group_owners";
 

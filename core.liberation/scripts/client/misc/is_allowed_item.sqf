@@ -14,7 +14,7 @@ private _ret = true;
 if (GRLIB_blacklisted_from_arsenal find _item >= 0) then {
 	_ret = false;
 } else {
-	{ if (_item find _x >= 0) exitWith { _ret = false } } foreach GRLIB_blacklisted_from_arsenal;
+	{ if (_item find _x >= 0) exitWith { _ret = false } } forEach GRLIB_blacklisted_from_arsenal;
 };
 
 if (LRX_arsenal_init_done) then {

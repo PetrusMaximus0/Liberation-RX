@@ -24,6 +24,6 @@ private _player_mobile_respawn = [];
 	_p1 = _mobile_respawn_list select { _x getVariable ["GRLIB_vehicle_owner", ""] == _uid };
 	_p1 = _p1 select [0, GRLIB_max_spawn_point];
 	if (count _p1 > 0) then { _player_mobile_respawn append _p1 };
-} foreach (AllPlayers - (entities "HeadlessClient_F"));
+} forEach (allPlayers - (entities "HeadlessClient_F"));
 
 (_server_mobile_respawn + _player_mobile_respawn);

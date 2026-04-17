@@ -36,10 +36,10 @@ while {true} do {
 					_marker setMarkerSizeLocal [ 0.6, 0.6 ];
 				};
 				_marker setMarkerColorLocal GRLIB_color_friendly;
-				_players_markers_bak pushback _marker;
+				_players_markers_bak pushBack _marker;
 			} else {
 				_nextmarker setMarkerPosLocal (getPosATL _nextunit);
-				_players_markers_bak pushback _nextmarker;
+				_players_markers_bak pushBack _nextmarker;
 			};
 
  			if (isPlayer _nextunit) then {
@@ -80,9 +80,9 @@ while {true} do {
 					_nextmarker setMarkerColorLocal _color;
 				};
 			};
-		} foreach (_players_list + _player_medics);
+		} forEach (_players_list + _player_medics);
 
-		{ deleteMarkerLocal _x } foreach (_players_markers - _players_markers_bak);
+		{ deleteMarkerLocal _x } forEach (_players_markers - _players_markers_bak);
 		_players_markers = _players_markers_bak;
 	};
 	sleep 1;

@@ -7,7 +7,7 @@ if (_player getVariable ["GRLIB_squad_context_loaded", false]) exitWith {};
 
 private _context = localNamespace getVariable [format ["player_context_%1", _uid], []];
 if (count _context == 0) then {
-    {if (_x select 0 == _uid) exitWith {_context = _x}} foreach GRLIB_player_context;
+    {if (_x select 0 == _uid) exitWith {_context = _x}} forEach GRLIB_player_context;
 };
 
 // AIs loadout
@@ -38,7 +38,7 @@ if (count (_context select 2) >= 1) then {
                 _unit setUnitRank _rank;
                 _unit setSkill (0.6 + (GRLIB_rank_level find _rank) * 0.05);
                 sleep 0.2;
-            } foreach (_context select 2);
+            } forEach (_context select 2);
             _grp setGroupOwner _owner;
             sleep 0.5;
             [_grp] remoteExec ["remote_call_load_context", _owner];

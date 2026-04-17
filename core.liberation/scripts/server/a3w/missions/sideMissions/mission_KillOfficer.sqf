@@ -42,7 +42,7 @@ _setupObjects = {
 		_x setUnitPos "UP";
 		_x disableAI "MOVE";
 		sleep 0.3;
-	} foreach (units _grp_hvt);
+	} forEach (units _grp_hvt);
 	_hvt_pos = getPosATL _hvt;
 
 	// Spawn Enemy

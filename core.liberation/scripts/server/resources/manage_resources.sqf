@@ -24,7 +24,7 @@ if (GRLIB_passive_income > 0) then { _passive_delay = GRLIB_passive_income };
 while { GRLIB_endgame == 0 } do {
 	sleep _passive_delay;
 
-	_active_players = count (AllPlayers - (entities "HeadlessClient_F"));
+	_active_players = count (allPlayers - (entities "HeadlessClient_F"));
 	if (_active_players > 0) then {
 		diag_log format ["--- LRX Resources Manager start at %1", time];
 		private _AmmoBox_cap = (_active_players * 3) min GRLIB_AmmoBox_cap;
@@ -53,8 +53,8 @@ while { GRLIB_endgame == 0 } do {
 		if (GRLIB_passive_income == 0 && ([ammobox_b_typename] call count_box) < _AmmoBox_cap) then {
 			_sectors = [];
 			{
-				if (_x in sectors_military && (([ammobox_b_typename, _x] call count_box) < 3)) then { _sectors pushback _x };
-			} foreach blufor_sectors;
+				if (_x in sectors_military && (([ammobox_b_typename, _x] call count_box) < 3)) then { _sectors pushBack _x };
+			} forEach blufor_sectors;
 
 			if (count _sectors > 0) then {
 				[(selectRandom _sectors), ammobox_b_typename, false, 80] call spawn_box;
@@ -65,8 +65,8 @@ while { GRLIB_endgame == 0 } do {
 		if (GRLIB_passive_income == 0 && ([fuelbarrel_typename] call count_box) < _FuelBarrel_cap) then {
 			_sectors = [];
 			{
-				if (_x in sectors_factory && ([fuelbarrel_typename, _x] call count_box) < 3) then { _sectors pushback _x };
-			} foreach blufor_sectors;
+				if (_x in sectors_factory && ([fuelbarrel_typename, _x] call count_box) < 3) then { _sectors pushBack _x };
+			} forEach blufor_sectors;
 
 			if (count _sectors > 0) then {
 				[(selectRandom _sectors), fuelbarrel_typename, false, 80] call spawn_box;
@@ -77,8 +77,8 @@ while { GRLIB_endgame == 0 } do {
 		if (([waterbarrel_typename] call count_box) < _WaterBarrel_cap) then {
 			_sectors = [];
 			{
-				if (_x in sectors_tower && ([waterbarrel_typename, _x] call count_box) < 3) then { _sectors pushback _x };
-			} foreach blufor_sectors;
+				if (_x in sectors_tower && ([waterbarrel_typename, _x] call count_box) < 3) then { _sectors pushBack _x };
+			} forEach blufor_sectors;
 
 			if (count _sectors > 0) then {
 				[(selectRandom _sectors), waterbarrel_typename, false, 80] call spawn_box;
@@ -89,8 +89,8 @@ while { GRLIB_endgame == 0 } do {
 		if (([foodbarrel_typename] call count_box) < _FoodBarrel_cap) then {
 			_sectors = [];
 			{
-				if (_x in sectors_bigtown && ([foodbarrel_typename, _x] call count_box) < 4) then { _sectors pushback _x };
-			} foreach blufor_sectors;
+				if (_x in sectors_bigtown && ([foodbarrel_typename, _x] call count_box) < 4) then { _sectors pushBack _x };
+			} forEach blufor_sectors;
 
 			if (count _sectors > 0) then {
 				[(selectRandom _sectors), foodbarrel_typename, false, 80] call spawn_box;

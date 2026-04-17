@@ -12,7 +12,7 @@ private _tmp_global_locked_respawn = [];
 			_tmp_global_locked_respawn pushBack _x;
 		};
 	};
-} foreach GRLIB_mobile_respawn;
+} forEach GRLIB_mobile_respawn;
 
 switch (_action) do {
 	case "add" : {

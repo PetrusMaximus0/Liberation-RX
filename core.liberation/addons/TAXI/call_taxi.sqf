@@ -64,7 +64,7 @@ private _loadout = getUnitLoadout (selectRandom civilians);
 	_x allowDamage false;
 	_x allowFleeing 0;
 	_x setUnitLoadout _loadout;
- } foreach (units _air_grp);
+ } forEach (units _air_grp);
  
 _vehicle setVariable ["GRLIB_taxi_crew", (units _air_grp), true];
 _air_grp setBehaviourStrong "CARELESS";

@@ -13,4 +13,4 @@ waitUntil {sleep 1; !isNil "blufor_sectors" };
 			_nextower call TFAR_antennas_fnc_deleteRadioTower;
 		};
 	};
-} foreach sectors_tower;
+} forEach sectors_tower;

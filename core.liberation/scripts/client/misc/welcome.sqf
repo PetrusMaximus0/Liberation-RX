@@ -30,7 +30,7 @@ if (_commander) then {
 		(_x getVariable ["R3F_LOG_disabled", false]) &&
 		!(typeOf _x in uavs_vehicles + static_vehicles_AI)
 	};
-	{ player hcSetGroup [group _x] } foreach _my_veh;
+	{ player hcSetGroup [group _x] } forEach _my_veh;
 	_prefix_tag = "Commander ";
 };
 

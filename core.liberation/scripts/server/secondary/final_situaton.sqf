@@ -5,7 +5,7 @@ private _spawnlist = [];
 {
 	_spawnpos = [(markerpos _x), 15, 0] call F_findSafePlace;
 	if (count _spawnpos > 0) then {_spawnlist pushBack [_spawnpos select 0, _spawnpos select 1, 0]};
-} foreach sectors_allSectors;
+} forEach sectors_allSectors;
 if (count _spawnlist == 0) exitWith {[gamelogic, "Could not find enough free space for Armageddon mission"] remoteExec ["globalChat", 0]};
 
 diag_log format ["--- LRX: %1 start static mission: Armageddon at %2", _caller, time];
@@ -16,8 +16,8 @@ publicVariable "GRLIB_secondary_in_progress";
 GRLIB_global_stop = 1;
 publicVariable "GRLIB_global_stop";
 
-{ deleteVehicle _x } foreach (units GRLIB_side_enemy);
-{ deleteVehicle (agent _x) } foreach agents;
+{ deleteVehicle _x } forEach (units GRLIB_side_enemy);
+{ deleteVehicle (agent _x) } forEach agents;
 
 // weather cloudy
 [] spawn {
@@ -47,7 +47,7 @@ _marker setMarkerText "           FINAL FIGHT";
 
 sectors_allSectors = sectors_allSectors + [_marker];
 blufor_sectors = [_marker];
-GRLIB_secondary_used_positions pushbackUnique _marker;
+GRLIB_secondary_used_positions pushBackUnique _marker;
 
 // spawn nuclear device + static + def squad
 private _base_output = [_spawnpos, false, true, false] call createOutpost;
@@ -108,7 +108,7 @@ while { _continue } do {
 
 	if ((time > _last_send || opforcap < 50) && !opforcap_max) then {
 		_last_send = round (time + 300);
-		_players = (AllPlayers - (entities "HeadlessClient_F")) select { _x distance2D lhd > GRLIB_sector_size && _x distance2D (markerPos GRLIB_respawn_marker) > GRLIB_sector_size};
+		_players = (allPlayers - (entities "HeadlessClient_F")) select { _x distance2D lhd > GRLIB_sector_size && _x distance2D (markerPos GRLIB_respawn_marker) > GRLIB_sector_size};
 		_target = selectRandom _players;
 		if (isNil "_target") then {
 			[getPosATL _target] spawn send_paratroopers;
@@ -141,7 +141,7 @@ publicVariable "sector_timer";
 
 if (_success) then {
 	[5] remoteExec ["BIS_fnc_earthquake", 0];
-	{ _x setDamage 1 } foreach (units GRLIB_side_enemy);
+	{ _x setDamage 1 } forEach (units GRLIB_side_enemy);
 	private _smoke = GRLIB_sar_fire createVehicle (getPos opfor_target);
 	_smoke attachTo [opfor_target, [0, 1.5, 0]];
 	0 setFog 0;
@@ -151,9 +151,9 @@ if (_success) then {
 	sleep 5;
 	[] spawn blufor_victory;
 } else {
-	{ if (count crew _x > 0) then {deleteVehicle _x} } foreach vehicles;
-	{ deleteVehicle _x } foreach (units GRLIB_side_enemy);
-	{ deleteVehicle _x } foreach (units GRLIB_side_friendly);
+	{ if (count crew _x > 0) then {deleteVehicle _x} } forEach vehicles;
+	{ deleteVehicle _x } forEach (units GRLIB_side_enemy);
+	{ deleteVehicle _x } forEach (units GRLIB_side_friendly);
 	sleep 3;
 	opfor_target hideObjectGlobal true;
 	opfor_target_assembled setPosWorld _savedpos;

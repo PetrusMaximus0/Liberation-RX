@@ -220,7 +220,7 @@ if (isServer) then {
 			{
 				detach _x;
 				_x setDamage 1;
-			} foreach _bombs;
+			} forEach _bombs;
 			deleteVehicle _unit;
 		};
 

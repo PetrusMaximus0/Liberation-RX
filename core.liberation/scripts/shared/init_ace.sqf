@@ -21,7 +21,7 @@ ACE_getSize = {
     private _ret = 0;
     {
         if (_object isKindOf _x) then { _ret = (_list select 1) select _forEachIndex };
-    } foreach (_list select 0);
+    } forEach (_list select 0);
     _ret;
 };
 

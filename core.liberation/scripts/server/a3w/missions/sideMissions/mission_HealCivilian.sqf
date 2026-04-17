@@ -123,7 +123,7 @@ _waitUntilSuccessCondition = {
 
 _failedExec = {
 	// Mission failed
-	{ [_x, -5] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
+	{ [_x, -5] call F_addReput } forEach (allPlayers - (entities "HeadlessClient_F"));
 	private _msg = format [localize "STR_SIDE_FAILED_REPUT", -5];
 	[gamelogic, _msg] remoteExec ["globalChat", 0];
 	{ deleteVehicle _x } forEach (units _grp_wnded);
@@ -133,7 +133,7 @@ _failedExec = {
 _successExec = {
 	// Mission complete
 	{ deleteVehicle _x } forEach (units _grp_wnded);
-	{ [_x, 5] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
+	{ [_x, 5] call F_addReput } forEach (allPlayers - (entities "HeadlessClient_F"));
 	_successHintMessage = "STR_HEAL_CIV_MESSAGE2";
 };
 

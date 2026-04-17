@@ -63,7 +63,7 @@ private _text = format ["Reward Received: %1 Ammo and %2 Fuel", _rwd_ammo, _rwd_
 		if (_rwd_rep > 0) then { [_x, _rwd_rep] call F_addReput };
 		[gamelogic, _text] remoteExec ["globalChat", owner _x];
 	};
-} forEach (AllPlayers - (entities "HeadlessClient_F"));
+} forEach (allPlayers - (entities "HeadlessClient_F"));
 
 [markerPos _liberated_sector] call showlandmines;
 

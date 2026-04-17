@@ -22,7 +22,7 @@ if (surfaceIsWater (getPos _fob)) then {
             ];
             _clipboard = _clipboard + _msg;
         };
-    } foreach (nearestObjects [_fob_pos, _objects_to_save, 200]);   // ["all"]
+    } forEach (nearestObjects [_fob_pos, _objects_to_save, 200]);   // ["all"]
 } else {
     private _fob_pos = getPosATL _fob;
     {
@@ -36,7 +36,7 @@ if (surfaceIsWater (getPos _fob)) then {
             ];
             _clipboard = _clipboard + _msg;
         };
-    } foreach (nearestObjects [_fob_pos, _objects_to_save, GRLIB_fob_range]);
+    } forEach (nearestObjects [_fob_pos, _objects_to_save, GRLIB_fob_range]);
 };
 private _msg = [_clipboard, 0, (count _clipboard)-2] call BIS_fnc_trimString;
 copyToClipboard ("[" + _msg + "]");

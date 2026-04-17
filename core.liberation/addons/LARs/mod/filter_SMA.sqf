@@ -9,4 +9,4 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + ["SMA_"];
 	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgWeapons" )
-) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
+) apply { GRLIB_whitelisted_from_arsenal pushBack (configName _x) } ;

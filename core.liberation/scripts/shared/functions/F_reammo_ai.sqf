@@ -16,7 +16,7 @@ private _remove_items = [
 	"R3F_FlashBang_mag"
 ];
 
-{ _unit removeMagazines _x } foreach _remove_items;
+{ _unit removeMagazines _x } forEach _remove_items;
 
 // hand weapon
 if (_hand_weapon != "") then {

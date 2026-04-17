@@ -9,7 +9,7 @@ _msg = _msg + "<t color='#777777'>------------------------------</t><br/>";
 _msg = _msg + format ["Current Top Fortune on <t color='#008000'>%1</t> at %2<br/><br/>", worldname, _datestring];
 
 private _HoF = [];
-{ _HoF pushback [(_x select 2),  (_x select 5)]} foreach GRLIB_player_scores;
+{ _HoF pushBack [(_x select 2),  (_x select 5)]} forEach GRLIB_player_scores;
 _HoF sort false;
 
 private _max = 5;

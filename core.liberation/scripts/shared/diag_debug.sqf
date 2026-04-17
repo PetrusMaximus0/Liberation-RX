@@ -27,9 +27,9 @@ if (_save == 1 && isServer) then {
 	{
 		private _var = _x;
 		if (typeName _var == "ARRAY") then {
-			{ diag_log format ["   %1", _x] } foreach _var;
+			{ diag_log format ["   %1", _x] } forEach _var;
 		} else { diag_log _x };
-	} foreach (profileNamespace getVariable GRLIB_save_key);
+	} forEach (profileNamespace getVariable GRLIB_save_key);
 	diag_log "-----------------------------------------------------";
 	diag_log "Player Context";
 	{
@@ -46,12 +46,12 @@ if (_save == 2) then {
 	diag_log "--- LRX Server Variables ---------------------------";
 	{
 		diag_log  format ["  %1 = %2", _x, serverNamespace getVariable _x ];
-	} foreach (allVariables serverNamespace);
+	} forEach (allVariables serverNamespace);
 
 	diag_log "--- LRX Player Variables ---------------------------";
 	{
 		diag_log  format ["  %1", _x];
-	} foreach (parsingNamespace getVariable "GRLIB_Player_variables");
+	} forEach (parsingNamespace getVariable "GRLIB_Player_variables");
 
 	diag_log "--- LRX Mission Event Handlers ---------------------";
 	diag_allMissionEventHandlers;
@@ -79,5 +79,5 @@ diag_log "------------------- LRX Diag End ----------------------";
 // 			profileNamespace setVariable [_x, nil];
 // 		};
 // 	};
-// } foreach (parsingNamespace getVariable "GRLIB_Player_variables");
+// } forEach (parsingNamespace getVariable "GRLIB_Player_variables");
 // saveProfileNamespace;

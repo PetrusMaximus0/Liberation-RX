@@ -31,17 +31,17 @@ while { cinematic_camera_started } do {
 
 			if ( count GRLIB_all_fobs > 0 ) then {
 				for "_i" from 0 to 2 do {
-					_positions pushback (selectRandom GRLIB_all_fobs);
+					_positions pushBack (selectRandom GRLIB_all_fobs);
 				};
 			};
 
 			if ( count active_sectors > 0 ) then {
 				for "_i" from 0 to 5 do {
-					_positions pushback (markerPos (selectRandom active_sectors));
+					_positions pushBack (markerPos (selectRandom active_sectors));
 				};
 			} else {
 				for "_i" from 0 to 5 do {
-					_positions pushback (markerPos (selectRandom sectors_allSectors));
+					_positions pushBack (markerPos (selectRandom sectors_allSectors));
 				};
 			};
 
@@ -49,7 +49,7 @@ while { cinematic_camera_started } do {
 				 _activeplayers = (allPlayers select { alive _x && _x distance2D (markerPos GRLIB_respawn_marker) > 100 });
 				 if ( count _activeplayers > 0 ) then {
 					for "_i" from 0 to 3 do {
-						_positions pushback (getpos (selectRandom _activeplayers));
+						_positions pushBack (getpos (selectRandom _activeplayers));
 					};
 				};
 			};

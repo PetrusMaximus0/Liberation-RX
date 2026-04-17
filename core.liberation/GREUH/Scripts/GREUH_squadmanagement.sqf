@@ -44,11 +44,11 @@ switch (squadaction) do {
 	case "rename" : {
 		if (leader _grp_player == player) then {
 			private _rename_controls = [521,522,523,524,525,526,527];
-			{ ctrlShow [_x, true] } foreach _rename_controls;
+			{ ctrlShow [_x, true] } forEach _rename_controls;
 			ctrlSetText [527, (groupid _grp_player)];
 			squadname = "";
 			waitUntil { (squadname != "" || squadaction == "" || !(dialog) || !(alive player)) };
-			{ ctrlShow [_x, false] } foreach _rename_controls;
+			{ ctrlShow [_x, false] } forEach _rename_controls;
 
 			if (alive player && dialog && squadname != "") then {
 				_grp_player setGroupIdGlobal [squadname];

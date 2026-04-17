@@ -7,7 +7,7 @@ _caretPosition = 0;
 while { dialog && (_caretPosition <= count _linearray) } do {
 	_currentline = [];
 	while { count _currentline < _caretPosition } do {
-		_currentline pushback (_linearray select (count _currentline));
+		_currentline pushBack (_linearray select (count _currentline));
 	};
 	_caretcharacter = "";
 	if ( ( _caretPosition % 2 == 0 ) && ( _caretPosition != count _linearray ) ) then { _caretcharacter = "_" };

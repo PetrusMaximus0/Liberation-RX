@@ -20,7 +20,7 @@ waitUntil { sleep 1; (round (getPos _unit select 2) <= 0) };
 if ( _backpack != "" && _backpack != "B_Parachute" ) then {
 	_unit addBackpack _backpack;
 	clearAllItemsFromBackpack _unit;
-	{_unit addItemToBackpack _x} foreach _backpack_contents;
+	{_unit addItemToBackpack _x} forEach _backpack_contents;
 	if (_is_mobile_respawn) then {
 		(backpackContainer _unit) setVariable ["GRLIB_mobile_respawn_bag", true, true];
 	};

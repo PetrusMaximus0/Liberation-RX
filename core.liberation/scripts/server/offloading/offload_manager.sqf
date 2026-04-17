@@ -13,10 +13,10 @@ while { GRLIB_endgame == 0 } do {
 			if ( side _x == GRLIB_side_friendly ) then {
 				_localgroup = _x;
 				_is_ai_only = true;
-				{ if ( isPlayer _x ) then { _is_ai_only = false } } foreach units _localgroup;
-				if ( _is_ai_only ) then { _blufor_ai_groups pushback _localgroup };
+				{ if ( isPlayer _x ) then { _is_ai_only = false } } forEach units _localgroup;
+				if ( _is_ai_only ) then { _blufor_ai_groups pushBack _localgroup };
 			};
-		} foreach (groups GRLIB_side_friendly select { groupOwner _x != owner _commander });
+		} forEach (groups GRLIB_side_friendly select { groupOwner _x != owner _commander });
 
 		if ( count _blufor_ai_groups > 0 ) then {
 			{
@@ -24,7 +24,7 @@ while { GRLIB_endgame == 0 } do {
 					_x setGroupOwner (owner _commander);
 					sleep 1;
 				};
-			} foreach _blufor_ai_groups;
+			} forEach _blufor_ai_groups;
 		};
 	};
 

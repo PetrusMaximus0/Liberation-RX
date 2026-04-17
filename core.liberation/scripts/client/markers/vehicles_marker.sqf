@@ -77,11 +77,11 @@ while {true} do {
 				_marker setMarkerSizeLocal [ 0.75, 0.75 ];
 				_marker setMarkerPosLocal (getPosATL _nextvehicle);
 				_marker setMarkerTextLocal ([(typeOf _nextvehicle)] call F_getLRXName);
-				_vehmarkers_bak pushback _marker;
+				_vehmarkers_bak pushBack _marker;
 			};
 		} else {
 			_nextmarker setMarkerPosLocal (getPosATL _nextvehicle);
-			_vehmarkers_bak pushback _nextmarker;
+			_vehmarkers_bak pushBack _nextmarker;
 		};
 
 		// marker decoration
@@ -140,7 +140,7 @@ while {true} do {
 							_vehicle_name = _vehicle_name + ",";
 						};
 						_vehicle_name = _vehicle_name + " ";
-					} foreach  _vehicle_crew;
+					} forEach  _vehicle_crew;
 					_vehicle_name = _vehicle_name + (format ["(%1)", [_nextvehicle] call F_getLRXName]);
 					_marker_show = 1;
 				};
@@ -204,9 +204,9 @@ while {true} do {
 		_nextmarker setMarkerColorLocal _marker_color;
 		_nextmarker setMarkerTypeLocal _marker_type;
 		_nextmarker setMarkerAlphaLocal _marker_show;
-	} foreach _veh_list;
+	} forEach _veh_list;
 
-	{ deleteMarkerLocal _x } foreach (_vehmarkers - _vehmarkers_bak);
+	{ deleteMarkerLocal _x } forEach (_vehmarkers - _vehmarkers_bak);
 	_vehmarkers = _vehmarkers_bak;
 
 	sleep 1;

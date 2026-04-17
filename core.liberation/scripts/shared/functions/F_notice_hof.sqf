@@ -2,7 +2,7 @@ private _max = 5;
 if (count GRLIB_player_scores < _max) then { _max = count GRLIB_player_scores };
 
 private _HoF = [];
-{ _HoF pushback [(_x select 1),  (_x select 5)]} foreach GRLIB_player_scores;
+{ _HoF pushBack [(_x select 1),  (_x select 5)]} forEach GRLIB_player_scores;
 _HoF sort false;
 
 private _msg = "<t color='#4BC9B0' shadow='2' size='1.75'>Hall of Fame</t><br/><t color='#777777'>------------------------------</t><br/><br/>";

@@ -16,8 +16,8 @@ _modify_permissions = [];
 {
 	_player_uid = _x select 0;
 	_player_permissions = [] + ( _x select 1 );
-	_modify_permissions pushback [ _player_uid, _player_permissions ];
-} foreach GRLIB_permissions;
+	_modify_permissions pushBack [ _player_uid, _player_permissions ];
+} forEach GRLIB_permissions;
 
 disableSerialization;
 
@@ -42,17 +42,17 @@ permission_create_activetext = compileFinal '
 
 
 
-_players_array pushback [ "Default", localize "STR_DEFAULT", 0];
+_players_array pushBack [ "Default", localize "STR_DEFAULT", 0];
 _idx = 2;
 
 {
 	if ( !( (name _x) in [ "HC1", "HC2", "HC3" ] ) ) then {
 		_nextplayer = _x;
 		_playername = [_nextplayer] call get_player_name;
-		_players_array pushback [ getPlayerUID _nextplayer, _playername, _idx ];
+		_players_array pushBack [ getPlayerUID _nextplayer, _playername, _idx ];
 		_idx = _idx + 1;
 	};
-} foreach allPlayers;
+} forEach allPlayers;
 
 
 {
@@ -96,7 +96,7 @@ _idx = 2;
 	buttonSetAction [ ((10 * _idx) + 111) + 8, format [ "permission_playerid = %1; permission_toset = 999;", _idx ] ];
 	_control ctrlCommit 0;
 
-} foreach _players_array;
+} forEach _players_array;
 
 while { dialog && alive player } do {
 
@@ -105,7 +105,7 @@ while { dialog && alive player } do {
 		_player_uid = "";
 		{
 			if ( _x select 2 == permission_playerid ) exitWith { _player_uid = _x select 0 };
-		} foreach _players_array;
+		} forEach _players_array;
 
 		if ( _player_uid != "" ) then {
 
@@ -127,7 +127,7 @@ while { dialog && alive player } do {
 					_player_permissions set [ permission_toset, true ];
 				};
 
-				_modify_permissions pushback [ _player_uid, _player_permissions ];
+				_modify_permissions pushBack [ _player_uid, _player_permissions ];
 			} else {
 
 				if ( permission_toset != 666 && permission_toset != 999 ) then {
@@ -144,7 +144,7 @@ while { dialog && alive player } do {
 							};
 						};
 						_idx = _idx + 1;
-					} foreach _player_permissions;
+					} forEach _player_permissions;
 				};
 
 				_modify_permissions set [ _player_idx, [ _player_uid, _player_permissions ] ];
@@ -171,11 +171,11 @@ while { dialog && alive player } do {
 						_control ctrlSetTextColor color_denied;
 						_control ctrlSetActiveColor color_denied;
 					};
-				} foreach [ 1, 2, 3, 4, 5, 6 ];
+				} forEach [ 1, 2, 3, 4, 5, 6 ];
 			};
-		} foreach _modify_permissions;
+		} forEach _modify_permissions;
 
-	} foreach _players_array;
+	} forEach _players_array;
 
 	if ( save_changes) then {
 		GRLIB_permissions = _modify_permissions;

@@ -144,8 +144,8 @@ if (typeName _unit == "OBJECT") then {
 				{
 					_count = (_x select 1);
 					{ 
-						//diag_log [_x, _count select _foreachIndex];
-						_val = _val + (([_x] call _fn_getprice) * (_count select _foreachIndex));
+						//diag_log [_x, _count select _forEachIndex];
+						_val = _val + (([_x] call _fn_getprice) * (_count select _forEachIndex));
 					} forEach (_x select 0);
 				} forEach (_x select 1);
 			} else {

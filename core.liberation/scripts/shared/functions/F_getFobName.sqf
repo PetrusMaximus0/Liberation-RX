@@ -8,7 +8,7 @@ private _currentidx = 0;
 		_fobindex = _currentidx;
 	};
 	_currentidx = _currentidx + 1;
-} foreach GRLIB_all_fobs;
+} forEach GRLIB_all_fobs;
 
 if ( _fobindex != -1 ) then {
 	_fobname = military_alphabet select _fobindex;

@@ -19,7 +19,7 @@ private _patrolcorners = [
 	_waypoint setWaypointCombatMode "YELLOW";
 	_waypoint setWaypointSpeed "NORMAL";
 	_waypoint setWaypointCompletionRadius 30;
-} foreach _patrolcorners;
+} forEach _patrolcorners;
 
 if (count (waypoints _grp) > 1) then {
 	_wp0 = waypointPosition [_grp, 0];

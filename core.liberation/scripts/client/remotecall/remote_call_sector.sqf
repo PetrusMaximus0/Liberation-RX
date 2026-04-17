@@ -36,5 +36,5 @@ if (_status == 4) then {
 	["lib_sector_building", [_info]] call BIS_fnc_showNotification;
 };
 
-{ _x setMarkerColorLocal GRLIB_color_friendly } foreach blufor_sectors;
-{ _x setMarkerColorLocal GRLIB_color_enemy } foreach opfor_sectors;
+{ _x setMarkerColorLocal GRLIB_color_friendly } forEach blufor_sectors;
+{ _x setMarkerColorLocal GRLIB_color_enemy } forEach opfor_sectors;

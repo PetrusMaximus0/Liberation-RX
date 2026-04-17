@@ -13,7 +13,7 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + [
 	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgWeapons" )
-) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
+) apply { GRLIB_whitelisted_from_arsenal pushBack (configName _x) } ;
 
 // Weapon attachments
 private _weapon_equ = ["muzzle_", "acc_", "optic_", "bipod_" ];
@@ -24,7 +24,7 @@ private _weapon_equ = ["muzzle_", "acc_", "optic_", "bipod_" ];
 	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgWeapons" )
-) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
+) apply { GRLIB_whitelisted_from_arsenal pushBack (configName _x) } ;
 
 // Others object (backpack, etc..)
 (
@@ -35,7 +35,7 @@ private _weapon_equ = ["muzzle_", "acc_", "optic_", "bipod_" ];
 	((configName _x) iskindof 'Bag_Base')
 	"
 	configClasses (configfile >> "CfgVehicles" )
-) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
+) apply { GRLIB_whitelisted_from_arsenal pushBack (configName _x) } ;
 
 // Glasses
 (
@@ -44,4 +44,4 @@ private _weapon_equ = ["muzzle_", "acc_", "optic_", "bipod_" ];
 	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgGlasses" )
-) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
+) apply { GRLIB_whitelisted_from_arsenal pushBack (configName _x) } ;

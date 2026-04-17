@@ -67,7 +67,7 @@ _successExec = {
 		if (typeOf _x isKindof "AllVehicles") then {
 			[_x, "abandon"] call F_vehicleLock;
 		};
-	} foreach _vehicles;
+	} forEach _vehicles;
 
 	[_missionPos] spawn {
 		params ["_pos"];

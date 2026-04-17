@@ -74,7 +74,7 @@ private _is_linked = {
 	private _linked = false;
 	private _linked_unlocked = true;
 	private _base_link = "";
-	{ if (_classname == (_x select 0)) exitWith { _base_link = _x select 1; _linked = true; } } foreach GRLIB_vehicle_to_military_base_links;
+	{ if (_classname == (_x select 0)) exitWith { _base_link = _x select 1; _linked = true; } } forEach GRLIB_vehicle_to_military_base_links;
 
 	if ( _linked ) then {
 		if ( !(_base_link in blufor_sectors) ) then { _linked_unlocked = false };
@@ -109,9 +109,9 @@ while { dialog && alive player && (dobuild == 0 || buildtype in [GRLIB_InfantryB
 			if (count _config_list == 0) exitWith {	_msg = "       No Vehicle Available." };
 			{
 				if (buildtype == GRLIB_SquadBuildType ) then {
-					_build_list pushback _x;
+					_build_list pushBack _x;
 				} else {
-					if ( _score >= (_x select 4) && (_x select 4) < GRLIB_perm_hidden) then { _build_list pushback _x };
+					if ( _score >= (_x select 4) && (_x select 4) < GRLIB_perm_hidden) then { _build_list pushBack _x };
 				};
 			} forEach _config_list;
 			if (count _build_list == 0) then { _msg = "       Score too low!" };
@@ -243,7 +243,7 @@ while { dialog && alive player && (dobuild == 0 || buildtype in [GRLIB_InfantryB
 				(_display displayCtrl (110)) lnbSetColor  [[((lnbSize 110) select 0) - 1, 3], [0.4,0.4,0.4,1]];
 			};
 			(_display displayCtrl (110)) lnbSetData  [[_row, 0], str _affordable];
-		} foreach _build_list;
+		} forEach _build_list;
 		lbSetCurSel [110, buildtypeSel];
 	};
 

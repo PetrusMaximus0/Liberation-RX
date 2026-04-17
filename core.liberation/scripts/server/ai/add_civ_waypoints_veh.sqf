@@ -35,7 +35,7 @@ private _citylist = (sectors_allSectors select { (_pos distance2D (markerPos _x)
 private _convoy_destinations_markers = [_radius, _citylist, _min_waypoints, 20, _check_water] call F_getSectorPath;
 private _convoy_destinations = [];
 if (_vehicle isKindOf "Air") then {
-	{ _convoy_destinations pushback (markerPos _x) } forEach _convoy_destinations_markers;
+	{ _convoy_destinations pushBack (markerPos _x) } forEach _convoy_destinations_markers;
 } else {
 	_convoy_destinations = [_convoy_destinations_markers] call F_getPathRoadFilter;
 };
@@ -60,7 +60,7 @@ private ["_waypoint", "_wp0"];
 	_waypoint setWaypointBehaviour _behaviour;
 	_waypoint setWaypointCombatMode _combatMode;
 	_waypoint setWaypointCompletionRadius 200;
-} foreach _convoy_destinations;
+} forEach _convoy_destinations;
 
 if (count (waypoints _grp) > 1) then {
 	_wp0 = waypointPosition [_grp, 0];
@@ -68,4 +68,4 @@ if (count (waypoints _grp) > 1) then {
 	_waypoint setWaypointType "CYCLE";
 };
 
-{_x doFollow leader _grp} foreach units _grp;
+{_x doFollow leader _grp} forEach units _grp;

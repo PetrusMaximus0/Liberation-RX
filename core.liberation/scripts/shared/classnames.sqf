@@ -20,7 +20,7 @@ if (!_ret) exitWith { abort_loading = true };
 diag_log "--- LRX: Check West Classnames ---";
 private _blufor_vehicles = [];
 { _blufor_vehicles pushBackUnique (_x select 0) } forEach (infantry_units_west + light_vehicles + heavy_vehicles + air_vehicles + static_vehicles + support_vehicles_west + buildings_west);
-{ _blufor_vehicles pushBackUnique _x } foreach (blufor_air + static_vehicles_AI + boats_west + blufor_squad_inf_light + blufor_squad_inf + blufor_squad_at + blufor_squad_aa + blufor_squad_mix);
+{ _blufor_vehicles pushBackUnique _x } forEach (blufor_air + static_vehicles_AI + boats_west + blufor_squad_inf_light + blufor_squad_inf + blufor_squad_at + blufor_squad_aa + blufor_squad_mix);
 { [_x] call F_checkClass } forEach _blufor_vehicles;
 { units_loadout_overide set [_forEachIndex, toLower _x] } forEach units_loadout_overide;
 
@@ -63,7 +63,7 @@ if (GRLIB_enable_drones) then {
 		if ([(_x select 0), (uavs_def + uavs_west)] call F_itemIsInClass && _isUav) then {
 			uavs_vehicles pushBackUnique (_x select 0);
 		};
-	} foreach light_vehicles + heavy_vehicles + air_vehicles;
+	} forEach light_vehicles + heavy_vehicles + air_vehicles;
 };
 
 if (count uavs_vehicles > 0) then {

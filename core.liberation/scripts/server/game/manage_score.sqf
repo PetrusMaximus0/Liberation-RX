@@ -7,11 +7,11 @@ CHG_Perm = {
 	params ["_uid", "_perms"];
 	{
 		if ( _x select 0 == _uid ) exitWith { _x set [1,_perms] };
-	} foreach GRLIB_permissions;
+	} forEach GRLIB_permissions;
 	publicVariable "GRLIB_permissions";
 };
 
-waitUntil {sleep 1; count (AllPlayers - (entities "HeadlessClient_F")) > 0 };
+waitUntil {sleep 1; count (allPlayers - (entities "HeadlessClient_F")) > 0 };
 
 while {true} do {
 	{
@@ -115,6 +115,6 @@ while {true} do {
 			};
 			_x setVariable ["GREUH_score_last", _cur];
 		};
-	} forEach (AllPlayers - (entities "HeadlessClient_F"));
+	} forEach (allPlayers - (entities "HeadlessClient_F"));
 	sleep 3;
 };

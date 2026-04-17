@@ -38,7 +38,7 @@ if (GRLIB_SOG_enabled) then {
 	) apply {
 		private _title = getText (_x >> "name");
 		if (_title == "") then {_title = (configName _x)};
-		JKB_music_list pushback [_title, (configName _x), getNumber (_x >> "duration")];
+		JKB_music_list pushBack [_title, (configName _x), getNumber (_x >> "duration")];
 	};
 };
 
@@ -52,7 +52,7 @@ if (GRLIB_SOG_enabled) then {
 ) apply {
 	private _title = getText (_x >> "name");
 	if (_title == "") then {_title = (configName _x)};
-	JKB_music_list pushback [_title, (configName _x), getNumber (_x >> "duration")];
+	JKB_music_list pushBack [_title, (configName _x), getNumber (_x >> "duration")];
 };
 
 // Music player controls

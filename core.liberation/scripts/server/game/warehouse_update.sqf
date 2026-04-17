@@ -14,5 +14,5 @@ private ["_typename", "_box_count", "_indx"];
 			};
 			_indx = _indx + 1;
 		};
-	} foreach allSimpleObjects [_typename];
-} foreach (keys GRLIB_warehouse);
+	} forEach allSimpleObjects [_typename];
+} forEach (keys GRLIB_warehouse);

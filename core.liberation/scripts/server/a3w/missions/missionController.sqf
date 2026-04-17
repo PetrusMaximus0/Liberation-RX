@@ -37,7 +37,7 @@ while {true} do {
 			if (!isNil "A3W_debug") then {
 				diag_log "--- A3W Missions Debug ---";
 				if (!isNil "A3W_mission") then { _nextMission = A3W_mission };
-				{ diag_log format ["    %1", _x] } foreach SideMissions;
+				{ diag_log format ["    %1", _x] } forEach SideMissions;
 				diag_log format ["DBG: A3W mission selected: %1", _nextMission];
 				diag_log format ["DBG: A3W mission success: %1 / failed: %2", A3W_mission_success, A3W_mission_failed];
 				diag_log format ["DBG: A3W mission timer: delay: %1 - timeout: %2", A3W_Mission_delay, A3W_Mission_timeout];
@@ -50,7 +50,7 @@ while {true} do {
 	};
 
 	// Exit
-	if (count AllPlayers == 0) exitWith {};
+	if (count allPlayers == 0) exitWith {};
 
 	// Mission start + lock
 	[SideMissions, _nextMission, true] call setMissionState;

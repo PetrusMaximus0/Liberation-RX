@@ -41,7 +41,7 @@ if ( primaryWeapon _selectedmember != "") then {
 	private _primary_mags = 0;
 	if ( count primaryWeaponMagazine _selectedmember > 0 ) then {
 		_primary_mags = 1;
-		{ if ( ( _x select 0 ) == ( ( primaryWeaponMagazine _selectedmember ) select 0 ) ) then { _primary_mags = _primary_mags + 1; } } foreach (magazinesAmmo _selectedmember);
+		{ if ( ( _x select 0 ) == ( ( primaryWeaponMagazine _selectedmember ) select 0 ) ) then { _primary_mags = _primary_mags + 1; } } forEach (magazinesAmmo _selectedmember);
 	};
 	ctrlSetText [ 206, format ["%1: %2", localize 'STR_AMMO', _primary_mags ] ];
 } else {
@@ -55,7 +55,7 @@ if ( secondaryWeapon _selectedmember != "") then {
 	private _secondary_mags = 0;
 	if ( count secondaryWeaponMagazine _selectedmember > 0 ) then {
 		_secondary_mags = 1;
-		{ if ( ( _x select 0 ) == ( ( secondaryWeaponMagazine _selectedmember ) select 0 ) ) then { _secondary_mags = _secondary_mags + 1; } } foreach (magazinesAmmo _selectedmember);
+		{ if ( ( _x select 0 ) == ( ( secondaryWeaponMagazine _selectedmember ) select 0 ) ) then { _secondary_mags = _secondary_mags + 1; } } forEach (magazinesAmmo _selectedmember);
 	};
 	ctrlSetText [ 208, format ["%1: %2", localize 'STR_AMMO', _secondary_mags ] ];
 } else {

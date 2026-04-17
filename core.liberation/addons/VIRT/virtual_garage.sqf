@@ -46,7 +46,7 @@ while { dialog && alive player } do {
 
 			_control lnbSetColor [[((lnbSize 110) select 0) - 1, 0], [1,1,1,1]];
 			_control lnbSetColor [[((lnbSize 110) select 0) - 1, 1], [1,1,1,1]];
-		} foreach _vehicles_out;
+		} forEach _vehicles_out;
 
 		// list inside Garage
 		{
@@ -62,7 +62,7 @@ while { dialog && alive player } do {
 
 			_control lnbSetColor [[((lnbSize 110) select 0) - 1, 0], [0.4,0.4,0.4,1]];
 			_control lnbSetColor [[((lnbSize 110) select 0) - 1, 1], [0.4,0.4,0.4,1]];
-		} foreach GRLIB_virtual_garage;
+		} forEach GRLIB_virtual_garage;
 
 		_old_sel = -1;
 		sleep 1;
@@ -107,13 +107,13 @@ while { dialog && alive player } do {
 					player setVariable ["GRLIB_player_box_content", ([_vehicle, true] call F_getCargo), true];
 				};
 				{
-					_lst_r3f pushback (typeOf _x);
+					_lst_r3f pushBack (typeOf _x);
 					if (typeOf _x == playerbox_typename) then {
 						player setVariable ["GRLIB_player_box_content", ([_x, true] call F_getCargo), true];
 					};
 				} forEach (_vehicle getVariable ["R3F_LOG_objets_charges", []]);
 				{
-					_lst_lrx pushback (typeOf _x);
+					_lst_lrx pushBack (typeOf _x);
 					if (typeOf _x == playerbox_typename) then {
 						player setVariable ["GRLIB_player_box_content", ([_x, true] call F_getCargo), true];
 					};

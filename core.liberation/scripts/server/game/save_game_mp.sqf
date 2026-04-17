@@ -19,8 +19,8 @@ if (GRLIB_endgame >= 1 || GRLIB_global_stop == 1) then {
 			if (_x select 3 > 400) then {
 				_x set [3, 400];		// fuel
 			};
-			_player_scores pushback _x;
-		} foreach GRLIB_player_scores;
+			_player_scores pushBack _x;
+		} forEach GRLIB_player_scores;
 		GRLIB_player_scores = _player_scores;
 	} else {
 		GRLIB_permissions = [["Default",[true,false,false,true,false,true]]];
@@ -68,7 +68,7 @@ if (GRLIB_endgame >= 1 || GRLIB_global_stop == 1) then {
 			!(_x getVariable ["GRLIB_vehicle_owner", ""] in ["server", "public"])
 		};
 		_all_buildings = _all_buildings + _nextbuildings;
-	} foreach GRLIB_all_fobs;
+	} forEach GRLIB_all_fobs;
 
 	// Filter low score Player
 	private _player_scores = [];
@@ -77,8 +77,8 @@ if (GRLIB_endgame >= 1 || GRLIB_global_stop == 1) then {
 		_uid = _x select 0;
 		_score = _x select 1;
 		if (_score >= GRLIB_min_score_player) then {
-			_keep_score_id pushback _uid;
-			_player_scores pushback _x;
+			_keep_score_id pushBack _uid;
+			_player_scores pushBack _x;
 		};
 	} forEach GRLIB_player_scores;
 
@@ -97,17 +97,17 @@ if (GRLIB_endgame >= 1 || GRLIB_global_stop == 1) then {
 				_hascrew = _x getVariable ["GRLIB_vehicle_manned", false];
 				if (_nextclass == FOB_sign) exitWith {
 					_hascrew = _x getVariable ["GRLIB_fob_type", FOB_typename];
-					buildings_to_save pushback [_nextclass, _savedpos, _nextdir, _hascrew, _owner];
+					buildings_to_save pushBack [_nextclass, _savedpos, _nextdir, _hascrew, _owner];
 				};
 				if (_nextclass in [storage_medium_typename, cargo_sling_typename]) exitWith {
 					private	_lst_lrx = [_x] call save_lrx_object_direct;
-					buildings_to_save pushback [_nextclass, _savedpos, _nextdir, _hascrew, _owner, _lst_lrx];
+					buildings_to_save pushBack [_nextclass, _savedpos, _nextdir, _hascrew, _owner, _lst_lrx];
 				};
 				if (_owner == "") exitWith {
-					buildings_to_save pushback [_nextclass, _savedpos, _nextdir];
+					buildings_to_save pushBack [_nextclass, _savedpos, _nextdir];
 				};
 				if (_owner == "lrx") exitWith {
-					buildings_to_save pushback [_nextclass, _savedpos, _nextdir, _hascrew, _owner];
+					buildings_to_save pushBack [_nextclass, _savedpos, _nextdir, _hascrew, _owner];
 				};
 				if (_owner in _keep_score_id) then {
 					if (_nextclass in GRLIB_vehicles_light) then {
@@ -115,12 +115,12 @@ if (GRLIB_endgame >= 1 || GRLIB_global_stop == 1) then {
 						if (_nextclass == box_uavs_typename) then {
 							private _loaded_uavs = [_x] call save_r3f_object_direct;
 							if (count _loaded_uavs > 0) then {
-								buildings_to_save pushback [_nextclass, _savedpos, _nextdir, _hascrew, _owner, _loaded_uavs];
+								buildings_to_save pushBack [_nextclass, _savedpos, _nextdir, _hascrew, _owner, _loaded_uavs];
 							};
 							_default = false;
 						};
 						if (_default) then {
-							buildings_to_save pushback [_nextclass, _savedpos, _nextdir, _hascrew, _owner];
+							buildings_to_save pushBack [_nextclass, _savedpos, _nextdir, _hascrew, _owner];
 						};
 					} else {
 						//_color = _x getVariable ["GRLIB_vehicle_color", ""];
@@ -131,24 +131,24 @@ if (GRLIB_endgame >= 1 || GRLIB_global_stop == 1) then {
 						private	_lst_r3f = [_x] call save_r3f_object_direct;
 						private	_lst_lrx = [_x] call save_lrx_object_direct;
 						if ([_x] call F_vehicleSafeZone) then { _owner = "" };
-						buildings_to_save pushback [_nextclass, _savedpos, _nextdir, _hascrew, _owner, _color, _color_name, _lst_a3, _lst_r3f, _lst_lrx, _compo];
+						buildings_to_save pushBack [_nextclass, _savedpos, _nextdir, _hascrew, _owner, _color, _color_name, _lst_a3, _lst_r3f, _lst_lrx, _compo];
 					};
 				};
 			};
 		} else {
 			if (_r3f_state) then {
-				buildings_to_save pushback [_nextclass, _savedpos, _nextdir, _r3f_state];
+				buildings_to_save pushBack [_nextclass, _savedpos, _nextdir, _r3f_state];
 			} else {
-				buildings_to_save pushback [_nextclass, _savedpos, _nextdir];
+				buildings_to_save pushBack [_nextclass, _savedpos, _nextdir];
 			};
 		};
-	} foreach _all_buildings;
+	} forEach _all_buildings;
 
 	// Save Scores
 	private _permissions = [];
 	{
 		_uid = _x select 0;
-		if (_uid in _keep_score_id) then {_permissions pushback _x};
+		if (_uid in _keep_score_id) then {_permissions pushBack _x};
 	} forEach GRLIB_permissions;
 
 	// Save Context
@@ -160,7 +160,7 @@ if (GRLIB_endgame >= 1 || GRLIB_global_stop == 1) then {
 		if (count _buffer > 0) then {
 			_player_context pushBack _buffer;
 		} else {
-			{if (_x select 0 == _uid) exitWith {_player_context pushBack _x}} foreach GRLIB_player_context;
+			{if (_x select 0 == _uid) exitWith {_player_context pushBack _x}} forEach GRLIB_player_context;
 		}
 	} forEach _keep_score_id;
 	GRLIB_player_context = _player_context;
@@ -171,34 +171,34 @@ if (GRLIB_endgame >= 1 || GRLIB_global_stop == 1) then {
 	// Stats
 	stats_saves_performed = stats_saves_performed + 1;
 	_stats = [];
-	_stats pushback stats_opfor_soldiers_killed;
-	_stats pushback stats_opfor_killed_by_players;
-	_stats pushback stats_blufor_soldiers_killed;
-	_stats pushback stats_player_deaths;
-	_stats pushback stats_opfor_vehicles_killed;
-	_stats pushback stats_opfor_vehicles_killed_by_players;
-	_stats pushback stats_blufor_vehicles_killed;
-	_stats pushback stats_blufor_soldiers_recruited;
-	_stats pushback stats_blufor_vehicles_built;
-	_stats pushback stats_civilians_killed;
-	_stats pushback stats_civilians_killed_by_players;
-	_stats pushback stats_sectors_liberated;
-	_stats pushback stats_playtime;
-	_stats pushback stats_spartan_respawns;
-	_stats pushback stats_secondary_objectives;
-	_stats pushback stats_hostile_battlegroups;
-	_stats pushback stats_ieds_detonated;
-	_stats pushback stats_saves_performed;
-	_stats pushback stats_saves_loaded;
-	_stats pushback stats_reinforcements_called;
-	_stats pushback stats_prisoners_captured;
-	_stats pushback stats_blufor_teamkills;
-	_stats pushback stats_vehicles_recycled;
-	_stats pushback stats_ammo_spent;
-	_stats pushback stats_sectors_lost;
-	_stats pushback stats_fobs_built;
-	_stats pushback stats_fobs_lost;
-	_stats pushback stats_readiness_earned;
+	_stats pushBack stats_opfor_soldiers_killed;
+	_stats pushBack stats_opfor_killed_by_players;
+	_stats pushBack stats_blufor_soldiers_killed;
+	_stats pushBack stats_player_deaths;
+	_stats pushBack stats_opfor_vehicles_killed;
+	_stats pushBack stats_opfor_vehicles_killed_by_players;
+	_stats pushBack stats_blufor_vehicles_killed;
+	_stats pushBack stats_blufor_soldiers_recruited;
+	_stats pushBack stats_blufor_vehicles_built;
+	_stats pushBack stats_civilians_killed;
+	_stats pushBack stats_civilians_killed_by_players;
+	_stats pushBack stats_sectors_liberated;
+	_stats pushBack stats_playtime;
+	_stats pushBack stats_spartan_respawns;
+	_stats pushBack stats_secondary_objectives;
+	_stats pushBack stats_hostile_battlegroups;
+	_stats pushBack stats_ieds_detonated;
+	_stats pushBack stats_saves_performed;
+	_stats pushBack stats_saves_loaded;
+	_stats pushBack stats_reinforcements_called;
+	_stats pushBack stats_prisoners_captured;
+	_stats pushBack stats_blufor_teamkills;
+	_stats pushBack stats_vehicles_recycled;
+	_stats pushBack stats_ammo_spent;
+	_stats pushBack stats_sectors_lost;
+	_stats pushBack stats_fobs_built;
+	_stats pushBack stats_fobs_lost;
+	_stats pushBack stats_readiness_earned;
 
 	// Save Blob
 	private _lrx_liberation_savegame = [

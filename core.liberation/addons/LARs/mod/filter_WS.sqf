@@ -16,7 +16,7 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + _A3_Items + ["B_","O_","I_","U_"];
 	([(configName _x), _A3_Items] call F_startsWithMultiple)
 	"
 	configClasses (configfile >> "CfgWeapons" )
-) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
+) apply { GRLIB_whitelisted_from_arsenal pushBack (configName _x) } ;
 
 // Others object (backpack, etc..)
 (
@@ -26,7 +26,7 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + _A3_Items + ["B_","O_","I_","U_"];
 	((configName _x) iskindof 'Bag_Base')
 	"
 	configClasses (configfile >> "CfgVehicles" )
-) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
+) apply { GRLIB_whitelisted_from_arsenal pushBack (configName _x) } ;
 
 // Glasses
 (
@@ -35,4 +35,4 @@ GRLIB_MOD_signature = GRLIB_MOD_signature + _A3_Items + ["B_","O_","I_","U_"];
 	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgGlasses" )
-) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x) } ;
+) apply { GRLIB_whitelisted_from_arsenal pushBack (configName _x) } ;

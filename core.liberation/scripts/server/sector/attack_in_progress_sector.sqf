@@ -72,7 +72,7 @@ if (_ownership == GRLIB_side_enemy) then {
 			};
 			stats_sectors_lost = stats_sectors_lost + 1;
 			[_sector, 2] remoteExec ["remote_call_sector", 0];
-			{ [_x, -15] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
+			{ [_x, -15] call F_addReput } forEach (allPlayers - (entities "HeadlessClient_F"));
 			private _msg = format ["You have lost control of the %1 sector, your reputation drops by %2 points.", [_sector_pos] call F_getLocationName, -15];
 			[gamelogic, _msg] remoteExec ["globalChat", 0];
 			if (GRLIB_Commander_mode) then { [] call manage_sectors_commander };
@@ -114,7 +114,7 @@ if (_ownership == GRLIB_side_enemy) then {
 						[_x, _rwd_xp] call F_addScore;
 						[gamelogic, _text] remoteExec ["globalChat", owner _x];
 					};
-				} forEach (AllPlayers - (entities "HeadlessClient_F"));
+				} forEach (allPlayers - (entities "HeadlessClient_F"));
 			};
 		};
 	};
@@ -131,6 +131,6 @@ publicVariable "sector_attack_in_progress";
 if (GRLIB_Commander_mode) then { [] call manage_sectors_commander };
 if (!isNull _arsenal) then {_arsenal spawn {sleep 120; deleteVehicle _this}};
 if (!isNull _vehicle) then {_vehicle spawn {sleep 60; [_this, true, true] call F_vehicleClean}};
-if (count (units _grp) > 0) then {_grp spawn {sleep 60; {deleteVehicle _x} foreach (units _this); deleteGroup _this}};
+if (count (units _grp) > 0) then {_grp spawn {sleep 60; {deleteVehicle _x} forEach (units _this); deleteGroup _this}};
 
 diag_log format ["End Attack Sector %1 at %2", _sector, time];

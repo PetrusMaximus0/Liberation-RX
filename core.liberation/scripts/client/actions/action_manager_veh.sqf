@@ -146,7 +146,7 @@ while {true} do {
 		_unit addAction ["<t color='#FFFFFF'>" + localize "STR_NEWS_GOOD" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{[5] call remote_call_showtext},"",886,false,true,"","GRLIB_player_is_menuok && GRLIB_LastNews == 3",5];
 		_unit addAction ["<t color='#FFFFFF'>" + localize "STR_NEWS_BAD" + "</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\Talk_ca.paa'/>",{[6] call remote_call_showtext},"",886,false,true,"","GRLIB_player_is_menuok && GRLIB_LastNews == 4",5];
 		_unit setVariable ["GRLIB_sign_action", true];
-	} foreach _nearsign;
+	} forEach _nearsign;
 
 	// Land Money
 	_nearmoney = (nearestObjects [player, [money_typename], _searchradius]) select { isNil {_x getVariable "GRLIB_money_action"} };
@@ -154,7 +154,7 @@ while {true} do {
 		_unit = _x;
 		_unit addAction ["<t color='#00CC00'>" + localize "STR_TAKE_MONEY" + "</t>","scripts\client\actions\do_recycle.sqf","",102,true,true,"","GRLIB_player_is_menuok", 3];
 		_unit setVariable ["GRLIB_money_action", true];
-	} foreach _nearmoney;
+	} forEach _nearmoney;
 
 	// FOB Box
 	_nearfobbox = (nearestObjects [player, [FOB_box_typename, FOB_box_outpost, "Cargo_base_F", "Slingload_base_F"], _searchradius]) select { isNil {_x getVariable "GRLIB_fobbox_action"} };
@@ -170,7 +170,7 @@ while {true} do {
 			_unit addAction ["<t color='#FF6F00'>" + localize "STR_OUTPOST_ACTION" + "</t> <img size='1' image='res\ui_deployfob.paa'/>","scripts\client\actions\do_build_fob.sqf","",-981,false,true,"","[_target, _this] call GRLIB_checkBuildFOB", GRLIB_ActionDist_5];
 		};
 		_unit setVariable ["GRLIB_fobbox_action", true];
-	} foreach _nearfobbox;
+	} forEach _nearfobbox;
 
 	// Personal Ammobox
 	_nearpersobox = (nearestObjects [player, [playerbox_typename], _searchradius]) select { isNil {_x getVariable "GRLIB_personalbox_action"} };
@@ -192,7 +192,7 @@ while {true} do {
 				};
 			};
 		};
-	} foreach _nearpersobox;
+	} forEach _nearpersobox;
 
 	// Tent Respawn
 	_neartent = (GRLIB_mobile_respawn) select { typeOf _x == mobile_respawn && (_x distance2D player < _searchradius) && isNil {_x getVariable "GRLIB_tent_action"} };

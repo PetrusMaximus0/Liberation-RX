@@ -48,9 +48,9 @@ private [ "_current_sector", "_sector_pos", "_accept_current_sector"];
 	};
 
 	if (_accept_current_sector) then {
-		_possible_sectors pushback _current_sector;
+		_possible_sectors pushBack _current_sector;
 	};
-} foreach _all_possible_sectors;
+} forEach _all_possible_sectors;
 
 private _opfor_spawn_point = "";
 if ( count _possible_sectors > 0 ) then {

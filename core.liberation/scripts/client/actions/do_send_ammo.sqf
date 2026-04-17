@@ -25,7 +25,7 @@ if(!isNull (findDisplay 2337)) then {
 		_player_combo lbAdd format["%1", name _x];
 		_player_combo lbSetData [_i, getPlayerUID _x];
 		_i = _i + 1;
-	} foreach (AllPlayers - (entities "HeadlessClient_F"));
+	} forEach (allPlayers - (entities "HeadlessClient_F"));
 
 	_i = 0;
 	{
@@ -34,7 +34,7 @@ if(!isNull (findDisplay 2337)) then {
 			_ammo_combo lbSetValue [_i, _x];
 			_i = _i + 1;
 		};
-	} foreach [0, 50, 100, 150, 200, 300, 500, 1000, 2000, 5000];
+	} forEach [0, 50, 100, 150, 200, 300, 500, 1000, 2000, 5000];
 
 	_i = 0;
 	{
@@ -43,7 +43,7 @@ if(!isNull (findDisplay 2337)) then {
 			_fuel_combo lbSetValue [_i, _x];
 			_i = _i + 1;
 		};
-	} foreach [0, 10, 20, 30, 50, 100, 150, 200, 300, 500];
+	} forEach [0, 10, 20, 30, 50, 100, 150, 200, 300, 500];
 
 	_player_combo lbSetCurSel 0;
 	_ammo_combo lbSetCurSel 0;

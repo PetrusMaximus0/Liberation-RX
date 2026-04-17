@@ -42,7 +42,7 @@ if (_towed || _maned || (_owned && !_opfed) || _fobed || _blued) exitWith { fals
 _vehicle setVariable ["R3F_LOG_objets_charges", [], true];
 
 // Delete GRLIB Cargo
-{ deleteVehicle _x } foreach (_vehicle getVariable ["GRLIB_ammo_vehicle_load", []]);
+{ deleteVehicle _x } forEach (_vehicle getVariable ["GRLIB_ammo_vehicle_load", []]);
 _vehicle setVariable ["GRLIB_ammo_vehicle_load", [], true];
 
 // Delete Vehicle and Crew

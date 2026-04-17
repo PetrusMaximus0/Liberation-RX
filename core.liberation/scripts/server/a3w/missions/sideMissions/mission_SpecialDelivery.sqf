@@ -141,7 +141,7 @@ _waitUntilSuccessCondition = { ((GRLIB_A3W_Mission_SD select 0) == -1) };
 
 _failedExec = {
 	// Mission failed
-	{ [_x, -3] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
+	{ [_x, -3] call F_addReput } forEach (allPlayers - (entities "HeadlessClient_F"));
 	private _msg = format [localize "STR_SIDE_FAILED_REPUT", -3];
 	[gamelogic, _msg] remoteExec ["globalChat", 0];	
 	deleteMarker "GRLIB_A3W_Mission_SD_Item";

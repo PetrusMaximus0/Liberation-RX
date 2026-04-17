@@ -14,7 +14,7 @@ private _cargo = _all_objects;
 private _offset = -5;
 {
 	if ( _x select 0 == typeof _truck ) exitWith { _offset = (_x select 1) };
-} foreach (box_transport_config + box_transport_big_config);
+} forEach (box_transport_config + box_transport_big_config);
 
 _truck allowDamage false;
 sleep 1;
@@ -83,7 +83,7 @@ private ["_next_box", "_next_pos", "_next_box_dir", "_offset", "_obstacle"];
 			[localize "STR_BOX_CANTUNLOAD"] remoteExec ["hintSilent", owner _truck];
 		};
 	};
-} foreach _all_objects;
+} forEach _all_objects;
 
 sleep 2;
 _truck allowDamage true;

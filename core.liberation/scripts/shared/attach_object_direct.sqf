@@ -7,14 +7,14 @@ private _maxload = 0;
 		_config = _x;
 		_maxload = (count _x) - 2;
 	};
-} foreach (box_transport_config + box_transport_big_config);
+} forEach (box_transport_config + box_transport_big_config);
 if (_maxload == 0) exitWith { objNull };
 
 private _vehicle_load = _vehicle getVariable ["GRLIB_ammo_vehicle_load", []];
 if (count _vehicle_load >= _maxload) exitWith { objNull };
 
 private _offsets = [];
-for "_i" from 2 to (2+_maxload) do { _offsets pushback (_config select _i) };
+for "_i" from 2 to (2+_maxload) do { _offsets pushBack (_config select _i) };
 
 private _object_class = _object;
 if (typeName _object == "OBJECT") then {
@@ -24,7 +24,7 @@ if (typeName _object == "OBJECT") then {
 private _box_offset = [0, 0, 0];
 {
 	if (_object_class == (_x select 0)) exitWith { _box_offset = (_x select 1) };
-} foreach (box_transport_offset + box_transport_big_offset);
+} forEach (box_transport_offset + box_transport_big_offset);
 
 _vehicle allowDamage false;
 
@@ -47,7 +47,7 @@ if (_object isKindOf "Cargo_base_F") then {
 	[_object, 270] remoteExec ["setDir", 0];
 };
 _object setVariable ["R3F_LOG_disabled", true, true];
-_vehicle_load pushback _object;
+_vehicle_load pushBack _object;
 _vehicle setVariable ["GRLIB_ammo_vehicle_load", _vehicle_load, true];
 sleep 0.1;
 _vehicle allowDamage true;

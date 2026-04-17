@@ -31,7 +31,7 @@ while {time < _timeout && !_convoy_attacked && (({ alive _x } count _vehicles) >
 			if (_player_nearby && (damage _veh_cur >= 0.2 || _killed)) exitWith {
 				_convoy_attacked = true;
 			};
-		} foreach _vehicles;
+		} forEach _vehicles;
 	};
 
 	// Destination ?
@@ -49,7 +49,7 @@ while {time < _timeout && !_convoy_attacked && (({ alive _x } count _vehicles) >
 			};
 
 			if (_x distance2D _objective_pos <= _unload_range) then { _convoy_attacked = true };
-		} foreach _vehicles;
+		} forEach _vehicles;
 	};
 
 	// Drivers Follow
@@ -68,7 +68,7 @@ while {time < _timeout && !_convoy_attacked && (({ alive _x } count _vehicles) >
 				};
 				sleep 2;
 			};
-		} foreach _vehicles;
+		} forEach _vehicles;
 	};
 
     sleep 1;
@@ -96,7 +96,7 @@ if (_convoy_attacked) then {
 			} forEach (crew _vehicle);
 		};
 		sleep 0.5;
-	} foreach _vehicles;
+	} forEach _vehicles;
 
 	(units _grp) allowGetIn false;
 	(units _grp) orderGetIn false;

@@ -39,7 +39,7 @@ _waypoint setWaypointType "MOVE";
 _wp0 = waypointPosition [_grp, 0];
 _waypoint = _grp addWaypoint [_wp0, 0];
 _waypoint setWaypointType "CYCLE";
-{_x doFollow leader _grp} foreach units _grp;
+{_x doFollow leader _grp} forEach units _grp;
 
 _count = _count - 1;
 if (_count >= 1) then {	[_targetpos, _side, _count] spawn spawn_air };
@@ -56,7 +56,7 @@ if (_side == GRLIB_side_friendly) exitWith {
 	_waypoint setWaypointCombatMode "BLUE";
 	_waypoint setWaypointCompletionRadius 300;
 	_waypoint setWaypointStatements ["true", "[vehicle this, true, true] spawn F_vehicleClean"];
-	{_x doFollow (leader _grp)} foreach units _grp;
+	{_x doFollow (leader _grp)} forEach units _grp;
 	sleep 60;
 	if (!alive _vehicle) exitWith {};
 	[_vehicle, true, true] spawn F_vehicleClean;
@@ -127,7 +127,7 @@ _waypoint setWaypointBehaviour "CARELESS";
 _waypoint setWaypointCombatMode "BLUE";
 _waypoint setWaypointCompletionRadius 300;
 _waypoint setWaypointStatements ["true", "[vehicle this, true, true] spawn F_vehicleClean"];
-{_x doFollow (leader _grp)} foreach units _grp;
+{_x doFollow (leader _grp)} forEach units _grp;
 sleep 60;
 if (!alive _vehicle) exitWith {};
 [_vehicle, true, true] spawn F_vehicleClean;

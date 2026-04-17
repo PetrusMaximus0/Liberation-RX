@@ -22,7 +22,7 @@ private _lrx_get_mod_template = {
             (_mod_data select 0) pushBack ([_faction] call _lrx_getParamValue);
             (_mod_data select 1) pushBack _faction;
         };
-	} foreach _mod_list;
+	} forEach _mod_list;
 	_mod_data;
 };
 

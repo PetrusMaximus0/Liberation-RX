@@ -58,7 +58,7 @@ while { dialog && alive player } do {
 				_icon = (getText (configFile >> "CfgVehicleIcons" >> _icon));
 			};
 			lnbSetPicture  [110, [((lnbSize 110) select 0) - 1, 0],_icon];
-		} foreach _sell_list_dlg;
+		} forEach _sell_list_dlg;
 
 		lbSetCurSel [110, -1];
 		_refresh = false;

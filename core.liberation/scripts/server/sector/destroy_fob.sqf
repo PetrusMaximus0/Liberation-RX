@@ -37,7 +37,7 @@ if (count _all_buildings_to_destroy > 300) then { _sleep = 0 };
 	if (typeOf _building == Warehouse_typename) then {
 		{
 			if (_x distance2D _building < 30) then { deleteVehicle _x };
-		} foreach allSimpleObjects [waterbarrel_typename,fuelbarrel_typename,foodbarrel_typename,basic_weapon_typename];
+		} forEach allSimpleObjects [waterbarrel_typename,fuelbarrel_typename,foodbarrel_typename,basic_weapon_typename];
 
 		deleteVehicle (_building getVariable ["GRLIB_WarehouseOwner", objNull]);
 	};
@@ -53,7 +53,7 @@ if (count _all_buildings_to_destroy > 300) then { _sleep = 0 };
 
 	deleteVehicle _building;
 	sleep _sleep;
-} foreach _all_buildings_to_destroy;
+} forEach _all_buildings_to_destroy;
 
 _all_buildings_to_destroy = (_fob_pos nearObjects (GRLIB_fob_range * 2)) select { getObjectType _x >= 8 && (getPos _x select 2) >= 2 };
 { _x setPos (getPos _x)} forEach _all_buildings_to_destroy;

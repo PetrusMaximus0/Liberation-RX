@@ -65,10 +65,10 @@ GRLIB_build_need_cutter = [
 
 GRLIB_preview_spheres = [];
 while { count GRLIB_preview_spheres < 36 } do {
-	GRLIB_preview_spheres pushback ("Sign_Sphere100cm_F" createVehicleLocal [ 0, 0, 0 ]);
+	GRLIB_preview_spheres pushBack ("Sign_Sphere100cm_F" createVehicleLocal [ 0, 0, 0 ]);
 };
 
-{ _x setObjectTexture [0, "#(rgb,8,8,3)color(0,1,0,1)"] } foreach GRLIB_preview_spheres;
+{ _x setObjectTexture [0, "#(rgb,8,8,3)color(0,1,0,1)"] } forEach GRLIB_preview_spheres;
 
 manned = false;
 gridmode = 0;
@@ -233,7 +233,7 @@ while {true} do {
 			_vehicle setObjectMaterial [_forEachIndex, "\a3\data_f\default.rvmat"];
 			_vehicle setObjectTexture [_forEachIndex, '#(rgb,8,8,3)color(0,1,0,0.8)'];
 		} forEach (getObjectTextures _vehicle);
-		{ _x setObjectTexture [0, "#(rgb,8,8,3)color(0,1,0,1)"] } foreach GRLIB_preview_spheres;
+		{ _x setObjectTexture [0, "#(rgb,8,8,3)color(0,1,0,1)"] } forEach GRLIB_preview_spheres;
 
 		// Wait for building
 		while { build_confirmed == 1 && alive player } do {
@@ -270,14 +270,14 @@ while {true} do {
 			};
 			private _step = round (360 / count _preview_spheres);
 			{
-				_sphere_pos = (_truepos getPos [build_radius, _foreachIndex * _step]);
+				_sphere_pos = (_truepos getPos [build_radius, _forEachIndex * _step]);
 				_sphere_pos set [2, (_truepos select 2)];
 				if (_is_water) then {
 					_x setposASL _sphere_pos;
 				} else {
 					_x setposATL _sphere_pos;
 				};
-			} foreach _preview_spheres;
+			} forEach _preview_spheres;
 
 			_near_objects = [];
 			if (_classname in list_static_weapons) then {
@@ -336,12 +336,12 @@ while {true} do {
 
 				if (!build_valid) then {
 					GRLIB_ui_notif = "";
-					{ _x setObjectTexture [0, "#(rgb,8,8,3)color(0,1,0,1)"]; } foreach GRLIB_preview_spheres;
+					{ _x setObjectTexture [0, "#(rgb,8,8,3)color(0,1,0,1)"]; } forEach GRLIB_preview_spheres;
 				};
 				build_valid = true;
 			} else {
 				if (build_valid) then {
-					{ _x setObjectTexture [0, "#(rgb,8,8,3)color(1,0,0,1)"]; } foreach GRLIB_preview_spheres;
+					{ _x setObjectTexture [0, "#(rgb,8,8,3)color(1,0,0,1)"]; } forEach GRLIB_preview_spheres;
 				};
 				_vehicle setposATL _ghost_spot;
 				build_valid = false;
@@ -371,7 +371,7 @@ while {true} do {
 		if (!alive player) then { build_confirmed = 3 };
 		GRLIB_ui_notif = "";
 
-		{ _x setpos [ 0,0,0 ] } foreach GRLIB_preview_spheres;
+		{ _x setpos [ 0,0,0 ] } forEach GRLIB_preview_spheres;
 
 		// Cancel build
 		if (build_confirmed == 3) then {

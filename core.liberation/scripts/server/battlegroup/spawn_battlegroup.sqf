@@ -18,7 +18,7 @@ if (isNil "_liberated_sector") then {
 		_spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, _objective_pos] call F_findOpforSpawnPoint;
 		if (_spawn_marker != "") exitWith {};
 		sleep 1;
-	} foreach (blufor_sectors call BIS_fnc_arrayShuffle);
+	} forEach (blufor_sectors call BIS_fnc_arrayShuffle);
 } else {
 	_objective_pos = markerPos _liberated_sector;
 	_spawn_marker = [GRLIB_spawn_min, GRLIB_spawn_max, _objective_pos] call F_findOpforSpawnPoint;
@@ -57,7 +57,7 @@ private _vehicle_pool = opfor_battlegroup_vehicles;
 if ( combat_readiness <= 80 ) then { _vehicle_pool = opfor_battlegroup_vehicles_low_intensity };
 
 private _target_size = 2;
-private _current_players = count (AllPlayers - (entities "HeadlessClient_F"));
+private _current_players = count (allPlayers - (entities "HeadlessClient_F"));
 if (_current_players >= 2) then { _target_size = 3 };
 if (combat_readiness > 70) then { _target_size = _target_size + 1 };
 if (GRLIB_csat_aggressivity >= 2) then { _target_size = _target_size + 1 };

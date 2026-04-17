@@ -7,7 +7,7 @@ private _update = false;
 createDialog "liberation_squad";
 waitUntil { dialog };
 
-{ ctrlShow [_x, false] } foreach _rename_controls;
+{ ctrlShow [_x, false] } forEach _rename_controls;
 GRLIB_Squad_target = "Sign_Sphere100cm_F" createVehicleLocal [ 0, 0, 0 ];
 hideObject GRLIB_Squad_target;
 GRLIB_Squad_camera = "camera" camCreate (getpos player);
@@ -35,7 +35,7 @@ private _membercount = 0;
 	_unitname = format ["%1. %2", [ _x ] call F_getUnitPositionId, name _x];
 	lbAdd [101, _unitname];
 	_membercount = _membercount + 1;
-} foreach _squad_list;
+} forEach _squad_list;
 
 lbSetCurSel [101, 0];
 
@@ -162,7 +162,7 @@ while { dialog && alive player && _membercount > 0 } do {
 		ctrlEnable [217, false];
 		unitname = "";
 		_name = name _selectedmember;
-		{ ctrlShow [_x, true] } foreach _rename_controls;
+		{ ctrlShow [_x, true] } forEach _rename_controls;
 		ctrlSetText [527, _name];
 		waitUntil {uiSleep 0.1; ((GRLIB_squadaction == -1) || (unitname != "") || !(dialog) || !(alive player)) };
 
@@ -173,7 +173,7 @@ while { dialog && alive player && _membercount > 0 } do {
 			_selectedmember setName [unitname, _p1, _p2];
 			gamelogic globalChat format [localize "STR_LOG_UNIT_RENAMED",_name,unitname];
 		};
-		{ ctrlShow [_x, false] } foreach _rename_controls;
+		{ ctrlShow [_x, false] } forEach _rename_controls;
 		sleep 0.5;
 		ctrlEnable [217, true];
 		_update = true;
@@ -188,7 +188,7 @@ while { dialog && alive player && _membercount > 0 } do {
 			_unitname = format ["%1. %2", [ _x ] call F_getUnitPositionId, name _x];
 			lbAdd [101, _unitname];
 			_membercount = _membercount + 1;
-		} foreach _squad_list;
+		} forEach _squad_list;
 		lbSetCurSel [101, _selection];
 	};
 };

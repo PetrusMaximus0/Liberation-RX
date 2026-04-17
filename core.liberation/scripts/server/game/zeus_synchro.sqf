@@ -15,15 +15,15 @@ while {true} do {
 	_zeusunits = [];
 	{
 		if ((_x distance2D lhd > 500) && alive _x) then {
-			_zeusunits pushback _x;
+			_zeusunits pushBack _x;
 		};
-	} foreach (units GRLIB_side_friendly) + (units GRLIB_side_enemy);
+	} forEach (units GRLIB_side_friendly) + (units GRLIB_side_enemy);
 
 	{
 		if ((typeof _x in _vehicleClassnames ) && (typeof _x != ammobox_o_typename) && (( _x distance2D lhd > 500 ) || (typeof _x == huron_typename)) && alive _x ) then {
-			_zeusunits pushback _x;
+			_zeusunits pushBack _x;
 		};
-	} foreach vehicles;
+	} forEach vehicles;
 
 	//all building around fob
 	private _buildings = [];
@@ -39,9 +39,9 @@ while {true} do {
 	_units_to_remove = [];
 	{
 		if ( !(alive _x) ) then {
-			_units_to_remove pushback _x;
+			_units_to_remove pushBack _x;
 		};
-	} foreach (curatorEditableObjects (allCurators select 0));
+	} forEach (curatorEditableObjects (allCurators select 0));
 
 	{
 		_zgm = _x;
@@ -52,7 +52,7 @@ while {true} do {
 		_zgm setCuratorCoef ["synchronize", 0];
 		_zgm setCuratorCoef ["delete", 0];
 		_zgm setCuratorCoef ["destroy", 0];
-	} foreach allCurators;
+	} forEach allCurators;
 
 
 	if (!isNull GRLIB_active_commander) then {

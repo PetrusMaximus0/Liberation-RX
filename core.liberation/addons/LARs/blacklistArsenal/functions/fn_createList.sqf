@@ -28,7 +28,7 @@ switch ( toLower _listType ) do {
 	case "black" : {
 
 		//BLACK ( a blacklist is just a list of items, no need for structure )
-		//foreach passed item, side, global variable( STRING name ) or array holding any of previous
+		//forEach passed item, side, global variable( STRING name ) or array holding any of previous
 		{
 			switch ( typeName _x ) do {
 
@@ -71,7 +71,7 @@ switch ( toLower _listType ) do {
 				//if we passed an array
 				case ( typeName [] ) : {
 					{
-						//foreach item in the array recall this script
+						//forEach item in the array recall this script
 						_newList = [ _listType, _x, _newlist ] call LARs_fnc_createList;
 					}forEach _list;
 				};

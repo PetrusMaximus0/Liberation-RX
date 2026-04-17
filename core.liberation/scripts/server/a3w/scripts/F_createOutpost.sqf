@@ -37,7 +37,7 @@ private ["_nextclass", "_nextobject", "_nextpos", "_nextdir"];
     _nextobject setPosATL _nextpos;
 	_base_objects pushBack _nextobject;
     sleep 0.05;
-} foreach _objects_to_build;
+} forEach _objects_to_build;
 sleep 1;
 
 // Add Objective to destroy
@@ -53,7 +53,7 @@ if (_enable_objectives) then {
         _nextobject setPosATL _nextpos;
         _base_objectives pushBack _nextobject;
         sleep 0.1;
-    } foreach _objectives_to_build;
+    } forEach _objectives_to_build;
 };
 
 sleep 4;
@@ -66,13 +66,13 @@ sleep 4;
         [_x, "lock", "server"] call F_vehicleLock;
     };
     sleep 0.1;
-} foreach (_base_objectives + _base_objects);
+} forEach (_base_objectives + _base_objects);
 
 // Add Defenders
 private _grp_defenders = grpNull;
 private _grp_sentry = grpNull;
 private _defenders = [];
-private _nb_player = count (AllPlayers - (entities "HeadlessClient_F"));
+private _nb_player = count (allPlayers - (entities "HeadlessClient_F"));
 
 if (_enable_defenders) then {
     // Static Defenders
@@ -104,7 +104,7 @@ if (_enable_defenders) then {
         _waypoint setWaypointSpeed "LIMITED";
         _waypoint setWaypointBehaviour "SAFE";
         _waypoint setWaypointCompletionRadius 5;
-    } foreach _base_corners;
+    } forEach _base_corners;
 
     _waypoint = _grp_sentry addWaypoint [[(_base_position select 0) + ((_base_corners select 0) select 0), (_base_position select 1) + ((_base_corners select 0) select 1),0], 0];
     _waypoint setWaypointType "CYCLE";

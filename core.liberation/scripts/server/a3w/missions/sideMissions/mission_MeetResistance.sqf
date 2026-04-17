@@ -60,7 +60,7 @@ _setupObjects = {
 		_x setCaptive true;
 		_x setVariable ["GRLIB_can_speak", true, true];
 		_x setVariable ["GRLIB_A3W_Mission_MR1", true, true];
-	} foreach _managed_units;
+	} forEach _managed_units;
 
 	GRLIB_A3W_Mission_MR_BLUFOR = _managed_units;
 	publicVariable "GRLIB_A3W_Mission_MR_BLUFOR";
@@ -87,13 +87,13 @@ _setupObjects = {
 			_troops append (units _grp1);
 			sleep 10;
 			["lib_reinforcements", [_location_name]] remoteExec ["bis_fnc_shownotification", 0];
-			private _nb_player = count (AllPlayers - (entities "HeadlessClient_F"));
+			private _nb_player = count (allPlayers - (entities "HeadlessClient_F"));
 			if (_nb_player > 2) then {
 				_grp1 = [_target_pos, false, 300] call send_paratroopers;
 				_troops append (units _grp1);
 				sleep  10;
 			};
-			{ _x setCaptive false } foreach _managed_units;
+			{ _x setCaptive false } forEach _managed_units;
 
 			GRLIB_A3W_Mission_MR_OPFOR = _troops;
 			publicVariable "GRLIB_A3W_Mission_MR_OPFOR";
@@ -118,7 +118,7 @@ _waitUntilCondition = { {alive _x && _x distance2D _missionPos < GRLIB_sector_si
 
 _failedExec = {
 	// Mission failed
-	{ [_x, -3] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
+	{ [_x, -3] call F_addReput } forEach (allPlayers - (entities "HeadlessClient_F"));
 	private _msg = format [localize "STR_SIDE_FAILED_REPUT", -3];
 	[gamelogic, _msg] remoteExec ["globalChat", 0];
 	if (isNil "GRLIB_A3W_Mission_MR_OPFOR") then { GRLIB_A3W_Mission_MR_OPFOR = [] };

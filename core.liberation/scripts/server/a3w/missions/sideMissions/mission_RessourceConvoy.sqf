@@ -112,7 +112,7 @@ _waitUntilSuccessCondition = {
 _failedExec = {
 	// Mission failed
 	_failedHintMessage = ["STR_RSC_CONV_MESSAGE2", sideMissionColor];
-	{ deleteVehicle _x } foreach _ressources;
+	{ deleteVehicle _x } forEach _ressources;
 };
 
 _successExec = {

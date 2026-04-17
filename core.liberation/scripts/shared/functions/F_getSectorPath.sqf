@@ -18,7 +18,7 @@ while { count _destinations_markers < _min_wp && _max_try > 0} do {
 			if (_check_water && [markerPos _start_marker, markerPos _next_marker] call F_isWaterBetween) then {
 				_sector_list_tmp = _sector_list_tmp - [_next_marker];
 			} else {
-				_destinations_markers pushback _next_marker;
+				_destinations_markers pushBack _next_marker;
 				_start_marker = _next_marker;
 				_sector_list_tmp = _sector_list_tmp - [_start_marker];
 			};

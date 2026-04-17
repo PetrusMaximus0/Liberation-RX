@@ -32,7 +32,7 @@ private _nearbuildings = (nearestObjects [_pos, _compatible_classnames, _intel_r
 
 if (count _nearbuildings > 0) then {
 	private _building_pos = [];
-	{ _building_pos append (_x buildingPos -1) } foreach _nearbuildings;
+	{ _building_pos append (_x buildingPos -1) } forEach _nearbuildings;
 	_building_pos = _building_pos - [[0,0,0]];
 
 	if (count _building_pos >= 1) then {
@@ -44,7 +44,7 @@ if (count _nearbuildings > 0) then {
 				_pos = selectRandom _building_pos;
 				sleep 0.1;
 			};
-			_used_positions pushback _pos;
+			_used_positions pushBack _pos;
 
 			private _intelobject = createVehicle [selectRandom GRLIB_intel_items, zeropos, [], 10, "CAN_COLLIDE"];
 			_intelobject setVariable ["GRLIB_intel_search", true, true];

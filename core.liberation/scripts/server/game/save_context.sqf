@@ -20,13 +20,13 @@ if (_score >= GRLIB_min_score_player) then {
 		_squad_loaded = _player getVariable ["GRLIB_squad_context_loaded", false];
 		if (_squad_loaded) then {
 			{
-				_ai_group pushback [typeOf _x, rank _x, getUnitLoadout _x];
+				_ai_group pushBack [typeOf _x, rank _x, getUnitLoadout _x];
 			} forEach (_bros select {!([_x] call PAR_is_wounded)});
 			diag_log format ["--- LRX Info: %1 Squad saving %2 unit(s).", name _player, count _ai_group];
 		} else {
 			_context = localNamespace getVariable [format ["player_context_%1", _uid], []];
 			if (count _context == 0) then {
-				{if (_x select 0 == _uid) exitWith {_context = _x}} foreach GRLIB_player_context;
+				{if (_x select 0 == _uid) exitWith {_context = _x}} forEach GRLIB_player_context;
 			};
 			_ai_group = _context select 2;
 		};

@@ -208,7 +208,7 @@ if (!isNil "_lrx_liberation_savegame") then {
 				_s2 pushBack _x;
 			};
 		};
-	} foreach buildings_to_load;
+	} forEach buildings_to_load;
 
 	// Buildings
 	{
@@ -222,7 +222,7 @@ if (!isNil "_lrx_liberation_savegame") then {
 		_nextbuilding allowDamage false;
 		_nextbuilding setVectorDirAndUp [_nextdir select 0, _nextdir select 1];
 		_nextbuilding setPosWorld _nextpos;
-		_buildings_created pushback _nextbuilding;
+		_buildings_created pushBack _nextbuilding;
 
 		if (_nextclass == FOB_sign) then {
 			_nextbuilding setObjectTextureGlobal [0, getMissionPath "res\splash_libe2.paa"];
@@ -255,7 +255,7 @@ if (!isNil "_lrx_liberation_savegame") then {
 		if (_nextr3f) then {
 			_nextbuilding setVariable ["R3F_LOG_disabled", true, true];
 		};
-	} foreach _s1;
+	} forEach _s1;
 
 	// Objects
 	{
@@ -274,7 +274,7 @@ if (!isNil "_lrx_liberation_savegame") then {
 		_nextbuilding setVectorDirAndUp [_nextdir select 0, _nextdir select 1];
 		_nextbuilding setPosWorld _nextpos;
 		_nextbuilding setVelocity [0, 0, 0];
-		_buildings_created pushback _nextbuilding;
+		_buildings_created pushBack _nextbuilding;
 
 		if (GRLIB_ACE_enabled) then {
 			[_nextbuilding] call F_aceInitVehicle;
@@ -323,7 +323,7 @@ if (!isNil "_lrx_liberation_savegame") then {
 		};
 
 		if (_nextclass == mobile_respawn) then {
-			GRLIB_mobile_respawn pushback _nextbuilding;
+			GRLIB_mobile_respawn pushBack _nextbuilding;
 		};
 
 		if ([_nextclass, GRLIB_camo_net] call F_itemIsInClass) then {
@@ -344,7 +344,7 @@ if (!isNil "_lrx_liberation_savegame") then {
 				_nextbuilding setVariable ["R3F_LOG_disabled", false, true];
 			};
 		};
-	} foreach _s2;
+	} forEach _s2;
 
 	// Vehicles
 	{
@@ -367,7 +367,7 @@ if (!isNil "_lrx_liberation_savegame") then {
 		_nextbuilding addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 		_nextbuilding setVectorDirAndUp [_nextdir select 0, _nextdir select 1];
 		_nextbuilding setPosWorld _nextpos;
-		_buildings_created pushback _nextbuilding;
+		_buildings_created pushBack _nextbuilding;
 
 		if (GRLIB_ACE_enabled) then {
 			[_nextbuilding] call F_aceInitVehicle;
@@ -387,7 +387,7 @@ if (!isNil "_lrx_liberation_savegame") then {
 		};
 
 		if (_nextclass in respawn_vehicles) then {
-			GRLIB_mobile_respawn pushback _nextbuilding;
+			GRLIB_mobile_respawn pushBack _nextbuilding;
 		};
 
 		if (_owner != "") then {
@@ -447,7 +447,7 @@ if (!isNil "_lrx_liberation_savegame") then {
 				};
 			};
 		};
-	} foreach _s3;
+	} forEach _s3;
 
 	[_buildings_created] spawn {
 		params ["_list"];
@@ -467,7 +467,7 @@ if (!isNil "_lrx_liberation_savegame") then {
 			if (typeOf _x in _no_damage) then { _allow_damage = false };
 			_x setDamage 0;
 			if (_allow_damage) then { _x allowDamage true };
-		} foreach _list;
+		} forEach _list;
 	};
 
 	diag_log format ["--- LRX Load Game finish at %1", time];
@@ -482,9 +482,9 @@ if (count GRLIB_vehicle_to_military_base_links == 0) then {
 	while { count _assigned_bases < count sectors_military && count _assigned_vehicles < count elite_vehicles } do {
 		_nextbase = selectRandom (sectors_military select { !(_x in _assigned_bases) });
 		_nextvehicle = selectRandom (elite_vehicles select { !(_x in _assigned_vehicles) });
-		_assigned_bases pushback _nextbase;
-		_assigned_vehicles pushback _nextvehicle;
-		GRLIB_vehicle_to_military_base_links pushback [_nextvehicle, _nextbase];
+		_assigned_bases pushBack _nextbase;
+		_assigned_vehicles pushBack _nextvehicle;
+		GRLIB_vehicle_to_military_base_links pushBack [_nextvehicle, _nextbase];
 	};
 } else {
 	_classnames_to_check = GRLIB_vehicle_to_military_base_links;
@@ -492,7 +492,7 @@ if (count GRLIB_vehicle_to_military_base_links == 0) then {
 		if (! ([_x select 0] call F_checkClass)) then {
 			GRLIB_vehicle_to_military_base_links = GRLIB_vehicle_to_military_base_links - [_x];
 		};
-	} foreach _classnames_to_check;
+	} forEach _classnames_to_check;
 };
 
 {

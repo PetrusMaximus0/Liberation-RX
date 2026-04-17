@@ -91,7 +91,7 @@ GRLIB_SetupParamMenu = {
                 _idx = _idx + 1;
             } forEach _paramArray;
         };
-    } foreach GRLIB_PARAM_CatOrder;
+    } forEach GRLIB_PARAM_CatOrder;
 
 };
 

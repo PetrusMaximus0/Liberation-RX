@@ -25,7 +25,7 @@ private _civ_vehicle = [];
 private _find_multiple = {
     params ["_item", "_list"]; 
     private _ret = false; 
-    { if (_item find _x > 0) exitWith { _ret = true } } foreach _list;
+    { if (_item find _x > 0) exitWith { _ret = true } } forEach _list;
     _ret;
 };
 
@@ -73,7 +73,7 @@ lbClear 111;
 		_ctrl_buy lnbSetColor [[((lnbSize 111) select 0) - 1, 0], [0.4,0.4,0.4,1]];
 		_ctrl_buy lnbSetColor [[((lnbSize 111) select 0) - 1, 1], [0.4,0.4,0.4,1]];
 	};
-} foreach _buy_list_dlg;
+} forEach _buy_list_dlg;
 
 _ctrl_buy ctrlAddEventHandler ["LBSelChanged", {
 	params ["_control", "_lbCurSel", "_lbSelection"];
@@ -125,7 +125,7 @@ while { dialog && alive player } do {
 				_icon = (getText (configFile >> "CfgVehicleIcons" >> _icon));
 			};
 			lnbSetPicture [110, [((lnbSize 110) select 0) - 1, 0],_icon];
-		} foreach _sell_list_dlg;
+		} forEach _sell_list_dlg;
 
 		lbSetCurSel [110, -1];
 		_refresh = false;

@@ -38,7 +38,7 @@ _setupObjects = {
 	private _allowed_veh = {
 		params ["_item", "_blaklist"];
 		private _ret = true;
-		{ if (_item find _x >= 0) exitWith { _ret = false } } foreach _blaklist;
+		{ if (_item find _x >= 0) exitWith { _ret = false } } forEach _blaklist;
 		_ret;
 	};
 
@@ -117,7 +117,7 @@ _waitUntilSuccessCondition = nil;
 _failedExec = {
 	// Mission failed
 	_failedHintMessage = ["STR_KILL_BANDIT_MESSAGE2", sideMissionColor];
-	{ [_x, -5] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
+	{ [_x, -5] call F_addReput } forEach (allPlayers - (entities "HeadlessClient_F"));
 	private _msg = format [localize "STR_SIDE_FAILED_REPUT", -5];
 	[gamelogic, _msg] remoteExec ["globalChat", 0];
 };

@@ -25,7 +25,7 @@ private ["_unitrank", "_unit", "_class_overide"];
 		[_path, _unit] call F_getTemplateFile;
 	};
 	sleep 0.2;
-} foreach _classname;
+} forEach _classname;
 
 _grp setCombatMode "GREEN";
 _grp setBehaviourStrong "AWARE";

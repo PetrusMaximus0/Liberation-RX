@@ -80,7 +80,7 @@ if (_ownership == GRLIB_side_enemy) then {
 						[_x, _rwd_xp] call F_addScore;
 						[gamelogic, _text] remoteExec ["globalChat", owner _x];
 					};
-				} forEach (AllPlayers - (entities "HeadlessClient_F"));
+				} forEach (allPlayers - (entities "HeadlessClient_F"));
 			};
 		};
 	};
@@ -95,6 +95,6 @@ fob_attack_in_progress = fob_attack_in_progress - [_fob_pos];
 publicVariable "fob_attack_in_progress";
 
 if (GRLIB_Commander_mode) then { [] call manage_sectors_commander };
-if (count (units _grp) > 0) then {_grp spawn {sleep 60; {deleteVehicle _x} foreach (units _this); deleteGroup _this}};
+if (count (units _grp) > 0) then {_grp spawn {sleep 60; {deleteVehicle _x} forEach (units _this); deleteGroup _this}};
 
 diag_log format ["End Attack FOB %1 at %2", _fob_pos, time];

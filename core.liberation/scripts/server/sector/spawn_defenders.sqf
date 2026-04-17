@@ -3,7 +3,7 @@ params ["_sector_pos", "_defense_type", ["_fob", false]];
 private _grp = grpNull;
 private _vehicle = objNull;
 private _arsenal = objNull;
-private _players = (AllPlayers - (entities "HeadlessClient_F"));
+private _players = (allPlayers - (entities "HeadlessClient_F"));
 if (count _players == 0) exitWith {};
 private _cost = round ((GRLIB_defense_costs select _defense_type) / (count _players));
 {
@@ -37,7 +37,7 @@ _grp setBehaviourStrong "COMBAT";
     _x setSkill ["courage", 1];
     _x allowFleeing 0;
     if (GRLIB_force_english) then { _x setSpeaker (format ["Male0%1ENG", round (1 + floor random 9)]) };
-} foreach (units _grp);
+} forEach (units _grp);
 [_grp, _sector_pos, 80] spawn defence_ai;
 
 if (!_fob) then {

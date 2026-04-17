@@ -29,7 +29,7 @@ if (_ai_follow) then {
         player setVariable ["SOG_unit_list", _unit_list_redep];
     };
 };
-{ doStop _x } foreach (units group player);
+{ doStop _x } forEach (units group player);
 
 private _position = (_tunnel getVariable ["tunnel_position", 0]) + 1;
 private _msg = format [localize "STR_UI_TUNNEL_ENTRY_WARNING", _position];

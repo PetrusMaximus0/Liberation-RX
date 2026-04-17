@@ -8,7 +8,7 @@ GRLIB_redraw_marker_fob = false;
 sleep 2;
 while {true} do {
 	if (count GRLIB_all_fobs > 0 && (count _markers != count GRLIB_all_fobs || GRLIB_redraw_marker_fob)) then {
-		{ deleteMarker _x } foreach _markers;
+		{ deleteMarker _x } forEach _markers;
 		_markers = [];
 		{
 			_fobpos = _x;
@@ -26,13 +26,13 @@ while {true} do {
 				_marker setMarkerColorLocal "ColorYellow";
 			};
 			_marker setMarkerPos _fobpos;
-			_markers pushback _marker;
+			_markers pushBack _marker;
 		} forEach GRLIB_all_fobs;
 	};
 
 	// Def marker
 	if (count _markers_def != count GRLIB_sector_defense || GRLIB_redraw_marker_fob) then {
-		{ deleteMarker _x } foreach _markers_def;
+		{ deleteMarker _x } forEach _markers_def;
 		_markers_def = [];
 		{
 			private _sector = _x;
@@ -49,7 +49,7 @@ while {true} do {
 				};
 				_marker setMarkerColorLocal _color;
 				_marker setMarkerPos (markerPos _sector);
-				_markers_def pushback _marker;
+				_markers_def pushBack _marker;
 			};
 		} forEach (keys GRLIB_sector_defense);
 	};

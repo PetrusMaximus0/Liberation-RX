@@ -4,7 +4,7 @@ params ["_grp"];
 hintSilent localize "STR_HINT_SQUAD_COMING";
 waitUNtil { sleep 0.1; (local _grp) };
 
-{ _x allowDamage false } foreach (units _grp);
+{ _x allowDamage false } forEach (units _grp);
 private _pos = getPosATL player;
 private _alt = _pos select 2;
 
@@ -37,7 +37,7 @@ private _alt = _pos select 2;
         [_unit, true] remoteExec ["allowDamage", 0];
     };
     sleep 0.3;
-} foreach (units _grp);
+} forEach (units _grp);
 
 sleep 2;
 player setVariable ["GRLIB_squad_context_loaded", true, true];

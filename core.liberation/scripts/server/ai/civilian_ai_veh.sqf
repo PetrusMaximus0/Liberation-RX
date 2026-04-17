@@ -123,7 +123,7 @@ while { alive _vehicle && alive _driver } do {
 			_vehicle allowDamage true;
 			_vehicle setFuel 1;
 			_vehicle engineOn true;
-			{_x doFollow (leader _grp)} foreach units _grp;
+			{_x doFollow (leader _grp)} forEach units _grp;
 			_event_stared = false;
 			deleteMarker _marker;
 			_trigger = (time + _delay);

@@ -2,7 +2,7 @@ params [ ["_mission_cost", 0], "_caller" ];
 
 private _spawn_marker = [GRLIB_spawn_min, 99999, [], false] call F_findOpforSpawnPoint;
 if (_spawn_marker == "") exitWith { [gamelogic, "Could not find position for search and rescue mission"] remoteExec ["globalChat", 0] };
-GRLIB_secondary_used_positions pushbackUnique _spawn_marker;
+GRLIB_secondary_used_positions pushBackUnique _spawn_marker;
 
 diag_log format ["--- LRX: %1 start static mission: SAR at %2", _caller, time];
 resources_intel = resources_intel - _mission_cost;
@@ -30,7 +30,7 @@ _pilotUnits joinSilent _pilotsGrp;
 {
 	_x addMPEventHandler ["MPKilled", {_this spawn kill_manager}];
 	[_x, true] spawn prisoner_ai;
-} foreach _pilotUnits;
+} forEach _pilotUnits;
 sleep 1;
 
 private _grppatrol = [_helopos, ([] call F_getAdaptiveSquadComp), GRLIB_side_enemy, "infantry", true] call F_libSpawnUnits;
@@ -38,7 +38,7 @@ private _grppatrol = [_helopos, ([] call F_getAdaptiveSquadComp), GRLIB_side_ene
 
 private _nbsentry = 3 + (floor random 3);
 private _unitclass = [];
-while { (count _unitclass) < _nbsentry } do { _unitclass pushback opfor_sentry };
+while { (count _unitclass) < _nbsentry } do { _unitclass pushBack opfor_sentry };
 private _grpsentry = [_helopos, _unitclass, GRLIB_side_enemy, "infantry", true] call F_libSpawnUnits;
 
 private _vehicle_pool = opfor_vehicles;
@@ -46,7 +46,7 @@ if ( combat_readiness < 50 ) then { _vehicle_pool = opfor_vehicles_low_intensity
 
 private _vehtospawn = [];
 private _spawnchances = [75,50,15];
-{ if (floor random 100 < _x ) then { _vehtospawn pushBack (selectRandom _vehicle_pool); }; } foreach _spawnchances;
+{ if (floor random 100 < _x ) then { _vehtospawn pushBack (selectRandom _vehicle_pool); }; } forEach _spawnchances;
 
 private _vehicle_list = [];
 {
@@ -55,7 +55,7 @@ private _vehicle_list = [];
 	_vehicle setVariable ["GRLIB_vehicle_owner", "server", true];
 	_vehicle addMPEventHandler ['MPKilled', {_this spawn kill_manager}];
 	_vehicle_list pushBack _vehicle;
-} foreach _vehtospawn;
+} forEach _vehtospawn;
 
 secondary_objective_position_marker = getpos _helowreck;
 publicVariable "secondary_objective_position_marker";
@@ -74,7 +74,7 @@ if ( _alive_crew_count == 0 ) then {
 } else {
 	// success
 	[ 8 ] remoteExec ["remote_call_intel", 0];
-	{ _x setVariable ["GRLIB_vehicle_owner", "", true] } foreach _vehicle_list;
+	{ _x setVariable ["GRLIB_vehicle_owner", "", true] } forEach _vehicle_list;
 	resources_intel = resources_intel + (25 * _alive_crew_count);
 	combat_readiness = 15 max round (combat_readiness * GRLIB_secondary_objective_impact);
 	stats_secondary_objectives = stats_secondary_objectives + 1;

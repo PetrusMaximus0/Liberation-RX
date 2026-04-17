@@ -52,7 +52,7 @@ private _getBannedUID = {
 		if (typeName _r1 == "SCALAR") then {
 			if (_r1 > 0) then { _ban_combo lbAdd format["%1", _x] };
 		};
-	} foreach allVariables BTC_logic;
+	} forEach allVariables BTC_logic;
 };
 
 private _addBuild = {
@@ -106,11 +106,11 @@ _ammount_edit ctrlSetText "50";
 
 // Clear input
 private _input_controls = [521,522,523,524,525,526,527];
-{ ctrlShow [_x, false] } foreach _input_controls;
+{ ctrlShow [_x, false] } forEach _input_controls;
 
 // Clear output
 private _output_controls = [531,532,533,534,535,536];
-{ ctrlShow [_x, false] } foreach _output_controls;
+{ ctrlShow [_x, false] } forEach _output_controls;
 
 // Action buttons
 private _button_controls = [1600,1601,1602,1603,1604,1609,1610,1611,1612,1613,1614,1615,1616,1617,1618,1619,1623,1624,1631,1625,1626];
@@ -129,7 +129,7 @@ private _list = [];
 	_score_combo lbSetData [_i, _uid];
 	_score_combo lbSetColor [_i, _color];
 	_i = _i + 1;
-} foreach (AllPlayers - (entities "HeadlessClient_F"));
+} forEach (allPlayers - (entities "HeadlessClient_F"));
 
 {
 	_uid = _x select 0;
@@ -139,7 +139,7 @@ private _list = [];
 		_score_combo lbSetColor [_i, _color];
 		_i = _i + 1;
 	};
-} foreach GRLIB_player_scores;
+} forEach GRLIB_player_scores;
 
 // Build Vehicles list
 private _indx = 0;
@@ -265,8 +265,8 @@ while { alive player && dialog } do {
 			copyToClipboard str (profileNamespace getVariable [GRLIB_save_key, []]);
 			_msg = format ["Savegame %1 Exported to clipboard.", GRLIB_save_key];
 		} else {
-			{ ctrlEnable [_x, false] } foreach _button_controls;
-			{ ctrlShow [_x, true] } foreach _output_controls;
+			{ ctrlEnable [_x, false] } forEach _button_controls;
+			{ ctrlShow [_x, true] } forEach _output_controls;
 			output_save = [];
 			[player, {
 				[] call save_game_mp;
@@ -276,16 +276,16 @@ while { alive player && dialog } do {
 			waitUntil {uiSleep 0.3; ((count output_save > 0) || !(dialog) || !(alive player))};
 			ctrlSetText [ 536, str output_save ];
 			waitUntil {uiSleep 0.3; (!(dialog) || !(alive player)) };
-			{ ctrlShow [_x, false] } foreach _output_controls;
-			{ ctrlEnable [_x, true] } foreach _button_controls;
+			{ ctrlShow [_x, false] } forEach _output_controls;
+			{ ctrlEnable [_x, true] } forEach _button_controls;
 			_admin_msg = format ["Admin (%1) export the save game (%2)", name player, GRLIB_save_key];
 		};
 	};
 
 	if (do_import == 1) then {
 		do_import = 0;
-		{ ctrlEnable [_x, false] } foreach _button_controls;
-		{ ctrlShow [_x, true] } foreach _input_controls;
+		{ ctrlEnable [_x, false] } forEach _button_controls;
+		{ ctrlShow [_x, true] } forEach _input_controls;
 		input_save = "";
 		waitUntil {uiSleep 0.3; ((input_save != "") || !(dialog) || !(alive player))};
 		if ( input_save select [0,1] == "[" && input_save select [(count input_save)-1,(count input_save)] == "]") then {
@@ -302,8 +302,8 @@ while { alive player && dialog } do {
 			}] remoteExec ["bis_fnc_call", 2];
 			disableUserInput false;
 		} else { _msg = localize "STR_ERROR_INVALID_DATA";};
-		{ ctrlShow [_x, false] } foreach _input_controls;
-		{ ctrlEnable [_x, true] } foreach _button_controls;
+		{ ctrlShow [_x, false] } forEach _input_controls;
+		{ ctrlEnable [_x, true] } forEach _button_controls;
 	};
 
 	if (do_kick == 1) then {
@@ -373,7 +373,7 @@ while { alive player && dialog } do {
 	if (do_save == 1) then {
 		do_save = 0;
 		[{
-			{ [_x, getPlayerUID _x] call save_context } foreach (AllPlayers - (entities "HeadlessClient_F"));
+			{ [_x, getPlayerUID _x] call save_context } forEach (allPlayers - (entities "HeadlessClient_F"));
 			[] call save_game_mp;
 		}] remoteExec ["bis_fnc_call", 2];
 		_msg = format [localize "STR_GAME_FORCEFULLY_SAVED", GRLIB_save_key];

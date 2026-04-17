@@ -12,7 +12,7 @@ private _hostile_group = [];
 
 while {true} do {
 	waitUntil {sleep 0.1; (visibleMap || dialog) };
-	{ deleteMarkerLocal _x } foreach _hostile_markers;
+	{ deleteMarkerLocal _x } forEach _hostile_markers;
 	_hostile_markers = [];
 
 	_hostile_group = (groups GRLIB_side_enemy) select {
@@ -34,11 +34,11 @@ while {true} do {
 				_marker setMarkerTypeLocal "mil_warning";
 				_marker setMarkerSizeLocal [0.65, 0.65];
 				_marker setMarkerPosLocal (_leader getPos [floor(random 50), floor(random 360)]);
-				_hostile_markers pushback _marker;
+				_hostile_markers pushBack _marker;
 			};
 		};
 		sleep 0.1;
-	} foreach _hostile_group;
+	} forEach _hostile_group;
 
 	sleep (30 + floor(random 60));
 };

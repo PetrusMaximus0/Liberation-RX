@@ -234,13 +234,13 @@ if (!GRLIB_ACE_enabled) then {
 GRLIB_TipsText = [];
 {
 	if (_x select [0, 1] != "t" && _x != "br") then {
-    	GRLIB_TipsText pushback (_x select [7]);
+    	GRLIB_TipsText pushBack (_x select [7]);
 	};
 } forEach ((localize "STR_TUTO_TEXT12") splitString "></");
 GRLIB_LastNews = 0;
 
 // Draw Zeus
-{ [_x] call BIS_fnc_drawCuratorLocations } foreach allCurators;
+{ [_x] call BIS_fnc_drawCuratorLocations } forEach allCurators;
 
 // Sign Add
 dobuild = 0;
@@ -310,7 +310,7 @@ addMissionEventHandler ["Draw3D",{
 	if (typeOf _x isKindOf "Kart_01_Base_F") then {
 		_x addAction ["<t color='#00F880'>Enter Kart</t> <img size='1' image='\a3\ui_f\data\igui\cfg\simpletasks\types\car_ca.paa'/>",{ (_this select 1) moveInDriver (_this select 0) },"",999,true,true,"","GRLIB_player_is_menuok",5];
 	};
-} foreach vehicles;
+} forEach vehicles;
 
 // Local Save Game support
 if (isServer && hasInterface) then {

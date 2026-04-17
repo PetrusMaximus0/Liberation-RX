@@ -5,7 +5,7 @@ private _lst_a3 = [];
 // Weapons + Attachments
 {
 	_lst_a3 pushBack _x;
-} foreach (weaponsItemsCargo _vehicle);
+} forEach (weaponsItemsCargo _vehicle);
 
 // Magazines
 private _mag_cargo = getMagazineCargo _vehicle;

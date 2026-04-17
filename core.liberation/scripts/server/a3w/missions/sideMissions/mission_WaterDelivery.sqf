@@ -35,7 +35,7 @@ _waitUntilSuccessCondition = { ([_missionPos, waterbarrel_typename, 3] call chec
 
 _failedExec = {
 	// Mission failed
-	{ [_x, -2] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
+	{ [_x, -2] call F_addReput } forEach (allPlayers - (entities "HeadlessClient_F"));
 	private _msg = format [localize "STR_SIDE_FAILED_REPUT", -2];
 	[gamelogic, _msg] remoteExec ["globalChat", 0];		
 	deleteMarker _marker_mission;

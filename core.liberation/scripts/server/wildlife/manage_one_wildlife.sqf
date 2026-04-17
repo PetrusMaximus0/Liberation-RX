@@ -2,7 +2,7 @@ sleep (30 + floor(random 60));
 
 while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	while { diag_fps <= 35 } do { sleep 60 };
-	private _unit = selectRandom (AllPlayers - (entities "HeadlessClient_F"));
+	private _unit = selectRandom (allPlayers - (entities "HeadlessClient_F"));
 	if (isNil "_unit") exitWith {};
 
 	private _spawn_life = (

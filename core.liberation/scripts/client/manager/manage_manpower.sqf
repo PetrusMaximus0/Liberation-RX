@@ -24,7 +24,7 @@ while {true} do {
 				isNull (_x getVariable ["R3F_LOG_est_transporte_par", objNull])
 			};
 		};
-		{ _manpower_used = _manpower_used + ([_x] call _get_mp) } foreach (_player_vehicles + _mobile_respawn);
+		{ _manpower_used = _manpower_used + ([_x] call _get_mp) } forEach (_player_vehicles + _mobile_respawn);
 		resources_infantry = _manpower_used;
 	};
 	opfor_sectors = (sectors_allSectors - blufor_sectors);

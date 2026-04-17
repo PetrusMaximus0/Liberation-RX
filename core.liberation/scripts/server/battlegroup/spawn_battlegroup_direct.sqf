@@ -27,7 +27,7 @@ private _selected_opfor_battlegroup = [];
 private _target_size = GRLIB_battlegroup_size;
 
 for "_i" from 0 to _target_size do {
-	_selected_opfor_battlegroup pushback (selectRandom _vehicle_pool);
+	_selected_opfor_battlegroup pushBack (selectRandom _vehicle_pool);
 };
 
 {
@@ -38,7 +38,7 @@ for "_i" from 0 to _target_size do {
 	[_nextgrp, _objective_pos] spawn battlegroup_ai;
 	[_nextgrp, 3600] call F_setUnitTTL;
 	sleep 15;
-} foreach _selected_opfor_battlegroup;
+} forEach _selected_opfor_battlegroup;
 
 if (count opfor_troup_transports_truck > 0 && floor random 3 > 0) then {
 	_vehicle = [_spawn_pos, (selectRandom opfor_troup_transports_truck)] call F_libSpawnVehicle;

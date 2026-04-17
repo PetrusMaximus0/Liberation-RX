@@ -31,16 +31,16 @@ if (count GRLIB_saved_loadouts > 0) then {
 			((findDisplay 5251) displayCtrl (201)) lnbSetColor  [[((lnbSize 201) select 0) - 1, 1], [0.4,0.4,0.4,1]];
 		};
 
-	} foreach GRLIB_saved_loadouts;
+	} forEach GRLIB_saved_loadouts;
 	if (lbSize 201 > 0) then { lbSetCurSel [201, 0] };
 };
 
 private _loadplayers = [];
 {
 	if (!(name _x in ["HC1", "HC2", "HC3"]))  then {
-		_loadplayers pushback [name _x, _x];
+		_loadplayers pushBack [name _x, _x];
 	};
-} foreach (allPlayers - [player]);
+} forEach (allPlayers - [player]);
 
 if (count _loadplayers > 0) then {
 	{
@@ -48,7 +48,7 @@ if (count _loadplayers > 0) then {
 		private _playername = [_nextplayer] call get_player_name;
 		lbAdd [203, _playername];
 		lbSetCurSel [203, 0];
-	} foreach _loadplayers;
+	} forEach _loadplayers;
 	ctrlEnable [203, true];
 	ctrlEnable [204, true];
 };

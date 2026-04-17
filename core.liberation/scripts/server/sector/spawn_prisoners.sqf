@@ -25,6 +25,6 @@ private _prisoners = [];
         if ((floor random 100) <= 50) then { [_x] spawn bomber_ai };
     };
     sleep 0.1;
-} foreach _enemy_left;
+} forEach _enemy_left;
 
 _prisoners;

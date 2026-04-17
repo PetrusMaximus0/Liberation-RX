@@ -13,7 +13,7 @@ if (([_sector_pos, (GRLIB_sector_size * 2), GRLIB_side_friendly] call F_getUnits
 	diag_log format ["--- LRX Manage Sector: Sector %1 have no more enemy, aborting.", _sector];
 };
 
-active_sectors pushback _sector;
+active_sectors pushBack _sector;
 publicVariable "active_sectors";
 GRLIB_sector_spawning = true;
 publicVariable "GRLIB_sector_spawning";
@@ -47,7 +47,7 @@ private _nearRadioTower = ([_sector_pos, GRLIB_side_enemy] call F_getNearestTowe
 private _active_players = [_sector_pos, (GRLIB_sector_size * 2)] call F_getNearbyPlayers;
 
 if (GRLIB_Commander_mode) then {
-	_active_players = (AllPlayers - (entities "HeadlessClient_F"));
+	_active_players = (allPlayers - (entities "HeadlessClient_F"));
 	_local_capture_size = 500;
 	_sector setMarkerTypeLocal "mil_objective";
 	_sector setMarkerColor "ColorYellow";
@@ -60,18 +60,18 @@ diag_log format ["Spawn Defend Sector %1 - player in combat %2 / readiness %3 at
 switch true do {
     case (_sector in sectors_bigtown): {
         _vehtospawn = [([] call F_getAdaptiveVehicle), (selectRandom militia_vehicles), (selectRandom militia_vehicles)];
-        while { count _squad1 < 12 } do { _squad1 pushback (selectRandom militia_squad) };
-        while { count _squad2 < 12 } do { _squad2 pushback (selectRandom militia_squad) };
+        while { count _squad1 < 12 } do { _squad1 pushBack (selectRandom militia_squad) };
+        while { count _squad2 < 12 } do { _squad2 pushBack (selectRandom militia_squad) };
         if (combat_readiness >= 33) then { _squad3 = ([] call F_getAdaptiveSquadComp) };
         if (combat_readiness >= 66) then { _squad4 = ([] call F_getAdaptiveSquadComp) };
         if (_count_players > 2) then { _squad5 = ([] call F_getAdaptiveSquadComp) };
-        _vehtospawn pushback (selectRandom militia_vehicles);
-        _vehtospawn pushback ([] call F_getAdaptiveVehicle);
+        _vehtospawn pushBack (selectRandom militia_vehicles);
+        _vehtospawn pushBack ([] call F_getAdaptiveVehicle);
         if (floor random 100 > (33 / GRLIB_difficulty_modifier)) then {
-            _vehtospawn pushback (selectRandom militia_vehicles)
+            _vehtospawn pushBack (selectRandom militia_vehicles)
         };
         if (floor random 100 > (66 / GRLIB_difficulty_modifier)) then {
-            _vehtospawn pushback ([] call F_getAdaptiveVehicle)
+            _vehtospawn pushBack ([] call F_getAdaptiveVehicle)
         };
         _spawncivs = true;
         _building_ai_max = 12;
@@ -81,28 +81,28 @@ switch true do {
 		_static_count = (floor random 3);
     };
     case (_sector in sectors_capture): {
-        while { count _squad1 < 12 } do { _squad1 pushback (selectRandom militia_squad) };
+        while { count _squad1 < 12 } do { _squad1 pushBack (selectRandom militia_squad) };
         if (combat_readiness >= 33) then {
-            while { count _squad2 < 12 } do { _squad2 pushback (selectRandom militia_squad) }
+            while { count _squad2 < 12 } do { _squad2 pushBack (selectRandom militia_squad) }
         };
         if (combat_readiness >= 66) then {
-            while { count _squad3 < 8 } do { _squad3 pushback (selectRandom militia_squad) };
+            while { count _squad3 < 8 } do { _squad3 pushBack (selectRandom militia_squad) };
             _infsquad3 = "militia"
         };
         if (_count_players > 2) then {
-            while { count _squad4 < 8 } do { _squad4 pushback (selectRandom militia_squad) };
+            while { count _squad4 < 8 } do { _squad4 pushBack (selectRandom militia_squad) };
             _infsquad4 = "militia"
         };
         if (_count_players > 4) then {
             _squad5 = ([] call F_getAdaptiveSquadComp)
         };
-        _vehtospawn pushback (selectRandom militia_vehicles);
-        _vehtospawn pushback (selectRandom militia_vehicles);
+        _vehtospawn pushBack (selectRandom militia_vehicles);
+        _vehtospawn pushBack (selectRandom militia_vehicles);
         if (floor random 100 > (33 / GRLIB_difficulty_modifier)) then {
-            _vehtospawn pushback (selectRandom militia_vehicles)
+            _vehtospawn pushBack (selectRandom militia_vehicles)
         };
         if (floor random 100 > (66 / GRLIB_difficulty_modifier)) then {
-            _vehtospawn pushback (selectRandom militia_vehicles)
+            _vehtospawn pushBack (selectRandom militia_vehicles)
         };
         _spawncivs = true;
         _building_ai_max = 10;
@@ -126,10 +126,10 @@ switch true do {
         };
         _vehtospawn = [([] call F_getAdaptiveVehicle), ([] call F_getAdaptiveVehicle), ([] call F_getAdaptiveVehicle)];
         if (floor random 100 > (33 / GRLIB_difficulty_modifier)) then {
-            _vehtospawn pushback ([] call F_getAdaptiveVehicle)
+            _vehtospawn pushBack ([] call F_getAdaptiveVehicle)
         };
         if (floor random 100 > (66 / GRLIB_difficulty_modifier)) then {
-            _vehtospawn pushback ([] call F_getAdaptiveVehicle)
+            _vehtospawn pushBack ([] call F_getAdaptiveVehicle)
         };
         _spawncivs = false;
         _building_ai_max = 8;
@@ -164,7 +164,7 @@ switch true do {
         _ied_count = 4;
     };
     case (_sector in sectors_factory): {
-        while { count _squad1 < 10 } do { _squad1 pushback (selectRandom militia_squad) };
+        while { count _squad1 < 10 } do { _squad1 pushBack (selectRandom militia_squad) };
         _infsquad2 = "infantry";
         _squad2 = ([] call F_getAdaptiveSquadComp);
         if (combat_readiness >= 66) then {
@@ -176,13 +176,13 @@ switch true do {
         if (_count_players > 4) then {
             _squad5 = ([] call F_getAdaptiveSquadComp)
         };
-        _vehtospawn pushback (selectRandom militia_vehicles);
-        _vehtospawn pushback (selectRandom militia_vehicles);
+        _vehtospawn pushBack (selectRandom militia_vehicles);
+        _vehtospawn pushBack (selectRandom militia_vehicles);
         if (floor random 100 > 33) then {
-            _vehtospawn pushback (selectRandom militia_vehicles)
+            _vehtospawn pushBack (selectRandom militia_vehicles)
         };
         if (floor random 100 > 66) then {
-            _vehtospawn pushback ([] call F_getAdaptiveVehicle)
+            _vehtospawn pushBack ([] call F_getAdaptiveVehicle)
         };
         _spawncivs = true;
         _building_ai_max = 6;
@@ -207,7 +207,7 @@ switch true do {
         };
         _building_ai_max = 4;
         if (floor random 100 > 33) then {
-            _vehtospawn pushback ([] call F_getAdaptiveVehicle)
+            _vehtospawn pushBack ([] call F_getAdaptiveVehicle)
         };
 		// Create mines
         [_sector_pos, 50] spawn createlandmines;
@@ -223,7 +223,7 @@ _sector setMarkerText format ["%2 - Loading %1%%", 10, _sectorName];
 // Extra veh based on difficulty
 if ((floor GRLIB_difficulty_modifier) > 1) then {
 	for "_i" from 1 to (floor (GRLIB_difficulty_modifier)) do {
-		_vehtospawn pushback ([] call F_getAdaptiveVehicle);
+		_vehtospawn pushBack ([] call F_getAdaptiveVehicle);
 	};
 };
 
@@ -247,7 +247,7 @@ _sector setMarkerText format ["%2 - Loading %1%%", 15, _sectorName];
 		private _managed_units = missionNamespace getVariable [format ["LRX_sector_%1_units", _sector], []];
 		missionNamespace setVariable [format ["LRX_sector_%1_units", _sector], _managed_units + (units _grp)];
 	};
-	_ratio = round linearConversion [0, 4, _foreachIndex, 20, 40];
+	_ratio = round linearConversion [0, 4, _forEachIndex, 20, 40];
 	_sector setMarkerText format ["%2 - Loading %1%%", _ratio, _sectorName];
 	sleep 0.5;
 } forEach [[_squad1, _infsquad1, 50], [_squad2, _infsquad2, 100], [_squad3, _infsquad3, 100], [_squad4, _infsquad4, 200], [_squad5, _infsquad5, 300]];
@@ -266,10 +266,10 @@ if (count _vehtospawn > 0) then {
 				[group (driver _vehicle), getPosATL _vehicle, (80 + floor random 160)] spawn defence_ai;
 			};
 		};
-		_ratio = round linearConversion [0, (count _vehtospawn) - 1, _foreachIndex, 50, 70];
+		_ratio = round linearConversion [0, (count _vehtospawn) - 1, _forEachIndex, 50, 70];
 		_sector setMarkerText format ["%2 - Loading %1%%", _ratio, _sectorName];
 		sleep 0.5;
-	} foreach _vehtospawn;
+	} forEach _vehtospawn;
 };
 
 // Create garrison
@@ -503,7 +503,7 @@ while {true} do {
 				[_stage, _sector_pos] spawn _stageAttack;
 				sleep 5;
 			};
-		} foreach _attackStages;
+		} forEach _attackStages;
 	};
 
 	sleep 5;

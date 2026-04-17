@@ -10,7 +10,7 @@ if (!(player diarySubjectExists str(parseText GRLIB_r3))) exitWith {_ret};
 private _uid = getPlayerUID _source;
 {
 	if ( _uid == _x select 0 ) exitWith { _perms = (_x select 1) };
-} foreach GRLIB_permissions;
+} forEach GRLIB_permissions;
 
 if (count _perms == 0) exitWith { _ret };
 if (_perms select _permission) exitWith { true };

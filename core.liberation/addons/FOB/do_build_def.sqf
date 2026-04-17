@@ -19,7 +19,7 @@ createDialog "FOB_Defense";
 waitUntil { dialog };
 
 private _input_controls = [521,522,523,524,525,526,527];
-{ ctrlShow [_x, false] } foreach _input_controls;
+{ ctrlShow [_x, false] } forEach _input_controls;
 
 private _display = findDisplay 2309;
 private _icon = getMissionPath "res\ui_build.paa";
@@ -34,7 +34,7 @@ lbClear 110;
         lnbAddRow [110, [_text, str _defense_price]];
         lnbSetPicture  [110, [((lnbSize 110) select 0) - 1, 0], _icon];
     };
-} foreach GRLIB_FOB_Defense;
+} forEach GRLIB_FOB_Defense;
 lbSetCurSel [110, -1];
 
 build_action = 0;
@@ -50,13 +50,13 @@ while { dialog && alive player } do {
         if (count _defense_path > 0) then {
             _objects_to_build = ([] call compile preprocessFileLineNumbers _defense_path);
         } else {
-            { ctrlShow [_x, true] } foreach _input_controls;
+            { ctrlShow [_x, true] } forEach _input_controls;
             input_save = "";
             waitUntil {uiSleep 0.3; ((input_save != "") || !(dialog) || !(alive player))};
             if ( input_save select [0,1] == "[" && input_save select [(count input_save)-1,(count input_save)] == "]") then {
                 _objects_to_build = (parseSimpleArray input_save);
             } else { systemChat localize "STR_FOB_ERROR_INVALID_DATA" };
-            { ctrlShow [_x, false] } foreach _input_controls;
+            { ctrlShow [_x, false] } forEach _input_controls;
         };
         closeDialog 0;
     };
@@ -107,7 +107,7 @@ _fob_pos set [2, 0];
         all_fob_defense_classnames pushBackUnique _nextclass;
         sleep 0.1;
     };
-} foreach _objects_to_build;
+} forEach _objects_to_build;
 
 gamelogic globalChat format [localize "STR_FOB_CONSTRUCTION_COMPLETED", _building_count, _count_objects];
 diag_log format ["--- LRX FOB Defense Construction Completed (%1/%2)", _building_count, _count_objects];

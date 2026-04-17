@@ -12,8 +12,8 @@ private _HoF = [];
 private _rep = 0;
 {
     _rep = (_x select 4);
-    if (_rep > 0) then { _HoF pushback [_rep,  (_x select 5)] };
-} foreach GRLIB_player_scores;
+    if (_rep > 0) then { _HoF pushBack [_rep,  (_x select 5)] };
+} forEach GRLIB_player_scores;
 _HoF sort false;
 
 private _max = 5;

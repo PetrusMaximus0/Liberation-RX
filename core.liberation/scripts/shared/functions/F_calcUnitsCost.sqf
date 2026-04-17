@@ -20,4 +20,4 @@ infantry_units = [];
 		sleep 0.1;
 	};
 	infantry_units pushBack [_unit_class, _unit_mp, _unit_cost, 0, _unit_rank];
-} foreach infantry_units_west;
+} forEach infantry_units_west;

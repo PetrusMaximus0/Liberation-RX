@@ -115,7 +115,7 @@ _failedExec = {
 	{ deleteVehicle _x } forEach _bombers;
 	{ deleteVehicle _x } forEach _managed_units;
 	{ deleteVehicle _x } forEach _civilians;
-	{ [_x, -15] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
+	{ [_x, -15] call F_addReput } forEach (allPlayers - (entities "HeadlessClient_F"));
 	private _msg = format [localize "STR_SIDE_FAILED_REPUT", -15];
 	[gamelogic, _msg] remoteExec ["globalChat", 0];
 };
@@ -127,7 +127,7 @@ _successExec = {
 	{ deleteVehicle _x } forEach _bombers;
 	{ deleteVehicle _x } forEach _civilians;
 	if (combat_readiness > 50) then { combat_readiness = combat_readiness - 7 };
-	{ [_x, 10] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
+	{ [_x, 10] call F_addReput } forEach (allPlayers - (entities "HeadlessClient_F"));
 };
 
 _this call sideMissionProcessor;

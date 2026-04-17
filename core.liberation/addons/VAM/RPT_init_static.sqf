@@ -47,7 +47,7 @@ if (GRLIB_LRX_Texture_enabled) then {
 		_name = getText (_x >> "name");
 		if (_name == "") then {_name = (configName _x)};
 		_texture = getText (_x >> "texture");
-		RPT_colorList pushback [_name, _texture];
+		RPT_colorList pushBack [_name, _texture];
 	};
 };
 

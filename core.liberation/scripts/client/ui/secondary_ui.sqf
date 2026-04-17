@@ -17,7 +17,7 @@ waitUntil { dialog };
 
 {
 	lbAdd [ 101, localize _x ];
-} foreach _mission_list;
+} forEach _mission_list;
 
 private ["_oldchoice", "_images", "_briefings", "_missioncost", "_missiontext", "_secondary_ok"];
 

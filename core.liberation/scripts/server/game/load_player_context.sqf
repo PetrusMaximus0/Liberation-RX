@@ -7,7 +7,7 @@ if (_player getVariable ["GRLIB_player_context_loaded", false]) exitWith {};
 
 private _context = localNamespace getVariable [format ["player_context_%1", _uid], []];
 if (count _context == 0) then {
-    {if (_x select 0 == _uid) exitWith {_context = _x}} foreach GRLIB_player_context;
+    {if (_x select 0 == _uid) exitWith {_context = _x}} forEach GRLIB_player_context;
 };
 
 // Player loadout

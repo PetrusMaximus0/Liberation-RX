@@ -7,7 +7,7 @@ private _missionPos = [_all_possible_sectors, 40] call F_findFlatPlace;
 if (count _missionPos == 0) exitWith { [gamelogic, "Could not find position for fob hunting mission"] remoteExec ["globalChat", 0] };
 
 private _spawn_marker = [GRLIB_sector_size, _missionPos, _all_possible_sectors] call F_getNearestSector;
-GRLIB_secondary_used_positions pushbackUnique _spawn_marker;
+GRLIB_secondary_used_positions pushBackUnique _spawn_marker;
 
 private _msg = "Secondary Mission: Fob Hunting";
 diag_log format ["--- LRX %1 start at %2", _msg, time];
@@ -44,7 +44,7 @@ stats_secondary_objectives = stats_secondary_objectives + 1;
 		_x setVariable ["GRLIB_vehicle_owner", "", true];
 		_x lock 0;
 	};
-} foreach _base_objects;
+} forEach _base_objects;
 
 waitUntil { sleep 30; (GRLIB_global_stop == 1 || [_missionPos, GRLIB_sector_size, GRLIB_side_friendly] call F_getUnitsCount == 0) };
 

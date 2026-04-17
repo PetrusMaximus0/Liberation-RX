@@ -35,12 +35,12 @@ while { GRLIB_endgame == 0 && GRLIB_global_stop == 0 } do {
 	};
 
 	_attack = false;
-	_countplayers = (AllPlayers - (entities "HeadlessClient_F")) select { ([_x] call F_getScore >= GRLIB_perm_tank) };
+	_countplayers = (allPlayers - (entities "HeadlessClient_F")) select { ([_x] call F_getScore >= GRLIB_perm_tank) };
 	if (count _countplayers >= 2 && combat_readiness >= 55) then {
 		_attack = true;
 	};
 
-	_countplayers = (AllPlayers - (entities "HeadlessClient_F")) select { ([_x] call F_getScore >= GRLIB_perm_log) };
+	_countplayers = (allPlayers - (entities "HeadlessClient_F")) select { ([_x] call F_getScore >= GRLIB_perm_log) };
 	if (count _countplayers >= 1 && combat_readiness >= 95 && floor random 5 == 0) then {
 		_attack = true;
 	};

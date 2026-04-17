@@ -36,7 +36,7 @@ _setupObjects = {
 	_managed_units = (["militia", 10, _missionPos] call F_buildingSquad);
 	private _grp1 = [_missionPos, 12, "militia"] call createCustomGroup;
 	_managed_units append (units _grp1);
-	private _nb_player = count (AllPlayers - (entities "HeadlessClient_F"));
+	private _nb_player = count (allPlayers - (entities "HeadlessClient_F"));
 	if (_nb_player > 2) then {
 		sleep 5;
 		_grp1 = [_missionPos, 12, "militia"] call createCustomGroup;

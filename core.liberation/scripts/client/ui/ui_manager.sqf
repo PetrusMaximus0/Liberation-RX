@@ -150,18 +150,18 @@ while {true} do {
 				};
 
 				if (_nearest_active_sector == "") then {
-					{ (_overlay displayCtrl _x) ctrlShow false } foreach _sectorcontrols;
+					{ (_overlay displayCtrl _x) ctrlShow false } forEach _sectorcontrols;
 					"zone_capture" setmarkerposlocal markers_reset;
 				} else {
-					{ (_overlay displayCtrl _x) ctrlShow true } foreach _sectorcontrols;
+					{ (_overlay displayCtrl _x) ctrlShow true } forEach _sectorcontrols;
 					"zone_capture" setmarkerposlocal (markerpos _nearest_active_sector);
 					(_overlay displayCtrl (205)) ctrlSetText (markerText _nearest_active_sector);
 				};
 
 				if (side player == GRLIB_side_civilian && !(isNil {player getVariable "GRLIB_unit_detected"})) then {
-					{ (_overlay displayCtrl _x) ctrlShow true } foreach _indicator;
+					{ (_overlay displayCtrl _x) ctrlShow true } forEach _indicator;
 				} else {
-					{ (_overlay displayCtrl _x) ctrlShow false } foreach _indicator;
+					{ (_overlay displayCtrl _x) ctrlShow false } forEach _indicator;
 				};
 
 				_zone_size = GRLIB_capture_size;
@@ -181,7 +181,7 @@ while {true} do {
 					_active_sectors_string = "<t align='right' color='#e0e000'>" + (localize "STR_ACTIVE_SECTORS") + "<br/>";
 					{
 						_active_sectors_string = _active_sectors_string + (markertext _x) + "<br/>";
-					} foreach active_sectors;
+					} forEach active_sectors;
 					_active_sectors_string = _active_sectors_string + "</t>";
 					(_overlay displayCtrl (516)) ctrlSetStructuredText parseText _active_sectors_string;
 				};

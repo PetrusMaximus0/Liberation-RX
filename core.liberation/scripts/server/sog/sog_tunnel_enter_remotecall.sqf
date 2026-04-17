@@ -46,7 +46,7 @@ if (_active_enemy == 0) then {
 };
 
 // cleanup
-{ deleteVehicle _x} foreach (units _grp);
+{ deleteVehicle _x} forEach (units _grp);
 deletegroup _grp;
 _tunnel setVariable ["SOG_enemy_group", nil];
 

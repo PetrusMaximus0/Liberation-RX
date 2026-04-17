@@ -40,4 +40,4 @@ if (count (waypoints _grp) > 1) then {
 	_waypoint setWaypointType "CYCLE";
 };
 
-{_x doFollow leader _grp} foreach units _grp;
+{_x doFollow leader _grp} forEach units _grp;

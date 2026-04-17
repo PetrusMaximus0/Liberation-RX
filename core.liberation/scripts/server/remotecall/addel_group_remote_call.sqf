@@ -14,7 +14,7 @@ private _tmp_global_locked_group = [];
 			_tmp_global_locked_group pushBack _x;
 		};
 	};
-} foreach global_locked_group;
+} forEach global_locked_group;
 
 switch (_action) do {
 	case "add" : {global_locked_group = _tmp_global_locked_group + [_group]};

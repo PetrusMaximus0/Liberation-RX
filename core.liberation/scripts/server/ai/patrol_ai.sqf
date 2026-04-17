@@ -48,7 +48,7 @@ private _prev = _patrolcorners select 0;
 			_prev = _pos;
 		};
 	};
-} foreach _patrolcorners;
+} forEach _patrolcorners;
 
 if (count (waypoints _grp) > 1) then {
 	_wp0 = waypointPosition [_grp, 0];

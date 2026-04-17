@@ -41,7 +41,7 @@ if (_classname in ["fob_water1"]) then {
 		_nextobject allowDamage false;
 		_nextobject setDir _nextdir;
 		_nextobject setPosASL _nextpos;
-	} foreach _objects_to_build;
+	} forEach _objects_to_build;
 	sleep 1;
 
 	private _curalt = 0;

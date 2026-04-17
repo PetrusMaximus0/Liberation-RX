@@ -55,7 +55,7 @@ while { dialog && alive player } do {
 				_icon = (getText (configFile >> "CfgVehicleIcons" >> _icon));
 			};
 			lnbSetPicture [110, [((lnbSize 110) select 0) - 1, 0], _icon];
-		} foreach _mybox;
+		} forEach _mybox;
 		if (count _mybox > 0) then {
 			lbSetCurSel [110, 0];
 		} else {
@@ -85,7 +85,7 @@ while { dialog && alive player } do {
 				_control lnbSetColor [[((lnbSize 111) select 0) - 1, 1], [1,1,1,1]];
 				_control lnbSetColor [[((lnbSize 111) select 0) - 1, 2], [1,1,1,1]];
 			};
-		} foreach (keys GRLIB_warehouse);
+		} forEach (keys GRLIB_warehouse);
 
 		lbSetCurSel [111, GRLIB_WHS_Selected];
 	};

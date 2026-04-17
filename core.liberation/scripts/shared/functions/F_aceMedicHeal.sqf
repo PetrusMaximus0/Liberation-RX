@@ -21,7 +21,7 @@ while {alive _medic} do {
 				if ((isNull _injured) && (_x getvariable ["ACE_isUnconscious", false]) && (alive _x) && (!isNull _x)) then {			
 					_injured = _x;
 				};
-			} foreach _units;
+			} forEach _units;
 			_units = _units - _deads;
 		};
 		sleep 5;

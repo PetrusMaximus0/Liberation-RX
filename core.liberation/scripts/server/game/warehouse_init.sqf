@@ -79,7 +79,7 @@ _warehouse setVariable ["GRLIB_WarehouseOwner", _man];
 _warehouse_dir = getdir _warehouse;
 {
 	_typename = _x;
-	_offset_conf = _warehouse_offset select _foreachIndex;
+	_offset_conf = _warehouse_offset select _forEachIndex;
 	_spawn_offset = _offset_conf select 0 select 0;
 	_box_dir = _offset_conf select 0 select 1;
 	_box_pos = (getposASL _warehouse) vectorAdd ([_spawn_offset, -_warehouse_dir] call BIS_fnc_rotateVector2D);
@@ -93,7 +93,7 @@ _warehouse_dir = getdir _warehouse;
 		};
 		_box setPosASL _box_pos_r1;
 	};
-} foreach (keys GRLIB_warehouse);
+} forEach (keys GRLIB_warehouse);
 
 // update warehouse
 [getPosATL _warehouse] call warehouse_update;

@@ -41,7 +41,7 @@ while { dialog && alive player } do {
             lnbAddRow [110, [_text, (_defense_list select _defense_type)]];
             lnbSetPicture  [110, [((lnbSize 110) select 0) - 1, 0], _icon];
             lnbSetData [110, [((lnbSize 110) select 0) - 1, 0], _sector];
-            _sectors_def pushback _sector;
+            _sectors_def pushBack _sector;
         } forEach GRLIB_all_fobs;
 
         private _sectors_sorted = (blufor_sectors - active_sectors) apply {[_x, (markerText _x)]};
@@ -53,8 +53,8 @@ while { dialog && alive player } do {
             lnbAddRow [110, [_text, (_defense_list select _defense_type)]];
             lnbSetPicture  [110, [((lnbSize 110) select 0) - 1, 0], _icon];
             lnbSetData [110, [((lnbSize 110) select 0) - 1, 0], _sector];
-            _sectors_def pushback _sector;
-        } foreach _sectors_sorted;
+            _sectors_def pushBack _sector;
+        } forEach _sectors_sorted;
         //lbSetCurSel [110, -1];
         _refresh = false;
     };

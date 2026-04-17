@@ -11,7 +11,7 @@ private _count = 0;
 		{
 			_count = (_x select 1);
 			{
-				_arsenal pushBack [_x, (_count select _foreachIndex)];
+				_arsenal pushBack [_x, (_count select _forEachIndex)];
 			} forEach (_x select 0);
 		} forEach (_x select 1);
 	} else {

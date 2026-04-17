@@ -31,7 +31,7 @@ player createDiarySubject ["LRX Info", "Thanks"];
 private _all_friends = "";
 {
 	_all_friends = _all_friends + format ["- <font color='%1'>%2</font><br/>", call _getRandomColor, _x];
-} foreach (loadFile "GREUH\LRX_friends.txt" splitString toString [13,10]);
+} forEach (loadFile "GREUH\LRX_friends.txt" splitString toString [13,10]);
 
 player createDiaryRecord ["LRX Info", ["Thanks", format ["... And You !!"]]];
 player createDiaryRecord ["LRX Info", ["Thanks", format ["And to all the good friends:<br/> %1", _all_friends]]];
@@ -93,7 +93,7 @@ private ["_name", "_param_value_list", "_param_value", "_param_data", "_param_te
 		_param_text = (_param_data select 1) select _param_value;
 		_diary pushBack format ["%1: <font color='#ff8000'>%2</font>", _paramName, _param_text];
 	} forEach _paramArray;
-} foreach GRLIB_groupedParams;
+} forEach GRLIB_groupedParams;
 reverse _diary;
 { player createDiaryRecord ["LRX Info", ["Settings", _x]] } forEach _diary;
 player createDiaryRecord ["LRX Info", ["Settings", format ["Build version: <font color='#ff8000'>%1</font>", GRLIB_build_version]]];

@@ -9,7 +9,7 @@ GRLIB_blacklisted_from_arsenal append [
 	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgVehicles")
-) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x)} ;
+) apply { GRLIB_whitelisted_from_arsenal pushBack (configName _x)} ;
 
 (
 	"
@@ -17,7 +17,7 @@ GRLIB_blacklisted_from_arsenal append [
 	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgGlasses")
-) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x)} ;
+) apply { GRLIB_whitelisted_from_arsenal pushBack (configName _x)} ;
 
 (
 	"
@@ -25,4 +25,4 @@ GRLIB_blacklisted_from_arsenal append [
 	([(configName _x)] call is_allowed_item)
 	"
 	configClasses (configfile >> "CfgWeapons")
-) apply { GRLIB_whitelisted_from_arsenal pushback (configName _x)} ;
+) apply { GRLIB_whitelisted_from_arsenal pushBack (configName _x)} ;

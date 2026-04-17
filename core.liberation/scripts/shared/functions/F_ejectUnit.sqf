@@ -39,7 +39,7 @@ if (_unit_alt >= 50) then {
 			clearAllItemsFromBackpack _unit;
 			_backpack_content = _unit getVariable ["GRLIB_para_backpack_contents", []];
 			if (count _backpack_content > 0) then {
-				{_unit addItemToBackpack _x} foreach _backpack_content;
+				{_unit addItemToBackpack _x} forEach _backpack_content;
 			};
 			_unit setVariable ["GRLIB_para_backpack", nil];
 			_unit setVariable ["GRLIB_para_backpack_contents", nil];

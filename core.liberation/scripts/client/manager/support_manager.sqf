@@ -36,7 +36,7 @@ while {true} do {
 	_unitList = (units group player) select { local _x && lifeState _x != "INCAPACITATED" };
 	_my_squad = player getVariable ["my_squad", nil];
 	if (!isNil "_my_squad") then { { _unitList pushBack _x } forEach units _my_squad };
-	{_unitList append units _x} foreach hcAllGroups player;
+	{_unitList append units _x} forEach hcAllGroups player;
 
 	if (count _unitList >= 1) then {
 		_needammo1 = false;

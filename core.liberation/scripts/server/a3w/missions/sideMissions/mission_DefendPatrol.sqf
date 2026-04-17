@@ -91,7 +91,7 @@ _waitUntilCondition = { {alive _x} count (units _patrol_grp) == 0 };
 _failedExec = {
 	// Mission failed
 	{deleteVehicle _x} forEach (units _patrol_grp);
-    { [_x, -10] call F_addReput } forEach (AllPlayers - (entities "HeadlessClient_F"));
+    { [_x, -10] call F_addReput } forEach (allPlayers - (entities "HeadlessClient_F"));
 	private _msg = format [localize "STR_SIDE_FAILED_REPUT", -10];
 	[gamelogic, _msg] remoteExec ["globalChat", 0];
     _failedHintMessage = ["STR_DEFPATROL_MESSAGE3", sideMissionColor];

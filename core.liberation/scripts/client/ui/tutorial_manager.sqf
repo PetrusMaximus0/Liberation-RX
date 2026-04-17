@@ -44,7 +44,7 @@ waitUntil { dialog };
 
 {
 	lbAdd [ 513, _x];
-} foreach _tutorial_titles;
+} forEach _tutorial_titles;
 
 lbSetCurSel [ 513, 0 ];
 

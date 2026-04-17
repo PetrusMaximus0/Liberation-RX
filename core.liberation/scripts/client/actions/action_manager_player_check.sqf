@@ -44,11 +44,11 @@ GRLIB_checkRedeploy = {
 
 GRLIB_checkSendAmmo = {
 	private _near_atm = [player, "ATM", GRLIB_ActionDist_5, false] call F_check_near;
-	(GRLIB_player_is_menuok && (GRLIB_player_near_base || _near_atm) && count (AllPlayers - (entities "HeadlessClient_F")) > 1)
+	(GRLIB_player_is_menuok && (GRLIB_player_near_base || _near_atm) && count (allPlayers - (entities "HeadlessClient_F")) > 1)
 };
 
 GRLIB_checkSendFuel = {
-	(GRLIB_player_is_menuok && GRLIB_player_near_base && count (AllPlayers - (entities "HeadlessClient_F")) > 1)
+	(GRLIB_player_is_menuok && GRLIB_player_near_base && count (allPlayers - (entities "HeadlessClient_F")) > 1)
 };
 
 GRLIB_checkBuyFuel = {

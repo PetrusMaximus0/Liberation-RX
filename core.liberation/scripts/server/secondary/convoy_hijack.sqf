@@ -86,7 +86,7 @@ for "_i" from 0 to ((count _convoy_destinations) -1) do {
 	_convoy_marker_wp setMarkerType "o_armor";
 	_convoy_marker_wp setMarkerColor GRLIB_color_enemy_bright;
 	_convoy_marker_wp setMarkerSize [0.6, 0.6];
-	_convoy_marker_list pushback _convoy_marker_wp;
+	_convoy_marker_list pushBack _convoy_marker_wp;
 };
 
 [ 4, _spawnpos ] remoteExec ["remote_call_intel", 0];
@@ -111,7 +111,7 @@ diag_log format ["--- LRX: %1 end static mission: Convoy Hijack at %2", _caller,
 
 //-----------------------------------------
 // Mission cleanup
-{ deleteMarker _x } foreach _convoy_marker_list;
+{ deleteMarker _x } forEach _convoy_marker_list;
 
 if (time > _mission_timeout || !alive _transport_vehicle) then {
 	combat_readiness = combat_readiness + 5;

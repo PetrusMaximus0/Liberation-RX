@@ -108,7 +108,7 @@ private ["_unit", "_rank_unit", "_pos", "_backpack"];
 		diag_log format ["--- LRX Error: Cannot create unit %1 at position %2", _x, _pos];
 	};
 	sleep 0.1;
-} foreach _classname;
+} forEach _classname;
 
 private _units = units _grp;
 if (count _units == 0) exitWith { diag_log "--- LRX Error: created group is empty."; grpNull };

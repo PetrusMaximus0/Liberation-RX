@@ -99,7 +99,7 @@ GRLIB_side_friendly setFriend [GRLIB_side_enemy, 0];
 			_x setVariable ["GRLIB_vehicle_owner", "public", true];
 		};
 	};
-} foreach vehicles;
+} forEach vehicles;
 
 // Init owner on user placed objects
 {

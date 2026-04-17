@@ -50,7 +50,7 @@ private _go_target = {
 	_waypoint setWaypointCombatMode "BLUE";
 	_waypoint setWaypointCompletionRadius 300;
 	_waypoint setWaypointStatements ["true", "[vehicle this, true, true] spawn F_vehicleClean"];
-	{_x doFollow (leader _grp)} foreach units _grp;
+	{_x doFollow (leader _grp)} forEach units _grp;
 };
 
 private _vehicle = [_targetpos, selectRandom opfor_troup_transports_heli] call F_libSpawnVehicle;

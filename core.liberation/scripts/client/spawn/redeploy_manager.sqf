@@ -52,14 +52,14 @@ if (GRLIB_player_spawned) then {
 		{
 			lbAdd [203, format ["%1 - (%2)",(_x select 0), (_x select 1)]];
 			lbSetValue [203, (_forEachIndex + 1), (_x select 1)];
-		} foreach GRLIB_saved_loadouts;
+		} forEach GRLIB_saved_loadouts;
 
-		{ ctrlShow [_x, true] } foreach _loadout_controls;
+		{ ctrlShow [_x, true] } forEach _loadout_controls;
 	};
 
 	if (lbSize 203 > 0) then { lbSetCurSel [203, 0] };
 } else {
-	{ ctrlShow [_x, false] } foreach _loadout_controls;
+	{ ctrlShow [_x, false] } forEach _loadout_controls;
 };
 
 private _choiceslist = [[_basenamestr, getPosATL lhd]];
@@ -92,7 +92,7 @@ for "_idx" from 0 to ((count _mobile_respawn) -1) do {
 lbClear 201;
 {
 	lbAdd [201, (_x select 0)];
-} foreach _choiceslist;
+} forEach _choiceslist;
 lbSetCurSel [201, 0];
 
 while { dialog && alive player && deploy == 0} do {

@@ -49,7 +49,7 @@ if ( isMultiplayer ) then {
 					};
 				};
 			};
-		} foreach group_owners;
+		} forEach group_owners;
 	};
 };
 

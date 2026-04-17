@@ -22,8 +22,8 @@ if (!GRLIB_hide_opfor) then {
 		_marker setMarkerTextLocal ( getText (_cfg >> _nextvehicle >> "displayName") );
 		_marker setMarkerTypeLocal "mil_pickup";
 		_marker setMarkerColor GRLIB_color_enemy;
-		_vehicle_unlock_markers pushback [ _marker, _nextbase ];
-	} foreach GRLIB_vehicle_to_military_base_links;
+		_vehicle_unlock_markers pushBack [ _marker, _nextbase ];
+	} forEach GRLIB_vehicle_to_military_base_links;
 };
 
 private _sector_count = -1;
@@ -46,20 +46,20 @@ while { GRLIB_endgame == 0 } do {
 				} else {
 					_x setMarkerType "Empty";
 				};
-			} foreach opfor_sectors;
+			} forEach opfor_sectors;
 			{
 				_x setMarkerTypeLocal ([_x] call _getMarkerType);
 				_x setMarkerColor GRLIB_color_friendly;
-			} foreach blufor_sectors;
+			} forEach blufor_sectors;
 		} else {
 			{
 				_x setMarkerTypeLocal ([_x] call _getMarkerType);
 				_x setMarkerColor GRLIB_color_enemy;
-			} foreach opfor_sectors;
+			} forEach opfor_sectors;
 			{
 				_x setMarkerTypeLocal ([_x] call _getMarkerType);
 				_x setMarkerColor GRLIB_color_friendly;
-			} foreach blufor_sectors;
+			} forEach blufor_sectors;
 		};
 
 		if (count _vehicle_unlock_markers > 0) then {
@@ -69,7 +69,7 @@ while { GRLIB_endgame == 0 } do {
 				} else {
 					(_x select 0) setMarkerColor GRLIB_color_enemy;
 				};
-			} foreach _vehicle_unlock_markers;
+			} forEach _vehicle_unlock_markers;
 		};
 		_sector_count = (count blufor_sectors + count GRLIB_all_fobs);
 	};

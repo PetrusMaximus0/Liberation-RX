@@ -58,7 +58,7 @@ else
 				if (typeOf _objet in uavs_vehicles) then {
 					player disableUAVConnectability [_objet, true];
 					player connectTerminalToUAV objNull;
-					{ deleteVehicle _x } foreach (crew _objet);
+					{ deleteVehicle _x } forEach (crew _objet);
 				};
 
 				systemChat format [STR_R3F_LOG_action_charger_fait,
